@@ -1,8 +1,4 @@
 # Studiova - Free Bootstrap Business Template
-#### Preview
-
- - [Demo](https://themewagon.github.io/Studiova/)
-
 #### Download
  - [Download from ThemeWagon]()
 

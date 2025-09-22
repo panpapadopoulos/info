@@ -23,7 +23,7 @@
             
           </a>
           <a href="index.html" class="logo-dark">
-            <h3> Panagiotis Papadopoulos </h1>
+            <h3> Panagiotis Papadopoulos</h3>
             
           </a>
         </div>
@@ -73,7 +73,7 @@
                   <div class="hstack gap-3">
                     <a href="../assets/resume.pdf"
                       class="btn btn-outline-light fs-6 bg-white px-3 py-2 text-dark w-50 hstack justify-content-center">
-                      Resume</a>
+                      Résumé</a>
                     <a href="https://equinox-libra-0be.notion.site/Panagiotis-Papadopoulos-CV-fe4eb372f5764ea8a869a35baaf9d73a"
                       class="btn btn-dark text-white fs-6 bg-dark px-3 py-2 w-50 hstack justify-content-center">
                       CV</a>
@@ -143,13 +143,14 @@
                   <div class="d-flex flex-column gap-6" data-aos="fade-up" data-aos-delay="100"
                     data-aos-duration="1000">
                     <h2 class="mb-0">About me</h2>
-                    <p class="fs-5 mb-0"  style="text-align: justify;">I recently completed my undergraduate studies in informatics and 
-                      telecommunications at the University of the Peloponnese. I am interested in evolving 
-                      my skills in both sectors of my science. I have experience in researching, 
-                      from several research projects that I was part of at my university. 
-                      Also, I have experience with customer service and inventory management 
-                      from our family business. I am looking forward to continuing my academic 
-                      studies and starting a master's degree in the field of computer science.</p>
+                    <p class="fs-5 mb-0"  style="text-align: justify;">I recently earned my undergraduate 
+                      degree in Informatics and Telecommunications from the University of the Peloponnese. 
+                      I am passionate about expanding my expertise across both areas of my field. 
+                      During my studies, I participated in several research projects, gaining valuable 
+                      experience in academic research. Additionally, I developed strong customer service 
+                      and inventory management skills through my involvement in our family business. 
+                      I am now continuing my academic journey as a Master’s student in Computer Science
+                       at Purdue University Northwest.</p>
                   </div>
                 </div>
                 <div>
@@ -278,49 +279,93 @@
                 </a>
               </div>
 
-              <div class="row g-4 justify-content-left">
-                <!-- First item -->
-                <div class="col-md-4 col-sm-6">
-                  <div class="item" style="max-width:280px; margin:auto;">
-                    <div class="portfolio d-flex flex-column gap-3">
-                      <div class="portfolio-img position-relative overflow-hidden rounded-3">
-                        <img src="../assets/images/backgrounds/resume.png" alt="Short Resume" class="img-fluid">
-                        <div class="portfolio-overlay">
-                          <a href="../assets/resume.pdf"
-                            class="position-absolute top-50 start-50 translate-middle bg-primary round-64 rounded-circle hstack justify-content-center"
-                            style="width:40px; height:40px;">
-                            <iconify-icon icon="lucide:arrow-up-right" class="fs-6 text-dark"></iconify-icon>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="portfolio-details text-center">
-                        <h5 class="mb-0">Short Resume</h5>
-                      </div>
-                    </div>
+              
+              
+
+              <div class="d-flex gap-4 justify-content-left">
+              <!-- First picture card -->
+              <a href="../assets/resume.pdf" class="image-card">
+                <div class="image-wrapper">
+                  <img src="../assets/images/backgrounds/resume.png" alt="Short Resume" class="img-fluid">
+                  <div class="overlay">
+                    <p >Résumé</p>
                   </div>
                 </div>
-                <!-- Second item -->
-                <div class="col-md-4 col-sm-6">
-                  <div class="item" style="max-width:280px; margin:auto;">
-                    <div class="portfolio d-flex flex-column gap-3">
-                      <div class="portfolio-img position-relative overflow-hidden rounded-3">
-                        <img src="../assets/images/backgrounds/cv.png" alt="Full CV" class="img-fluid">
-                        <div class="portfolio-overlay">
-                          <a href="https://equinox-libra-0be.notion.site/Panagiotis-Papadopoulos-CV-fe4eb372f5764ea8a869a35baaf9d73a"
-                            target="_blank"
-                            class="position-absolute top-50 start-50 translate-middle bg-primary round-64 rounded-circle hstack justify-content-center"
-                            style="width:40px; height:40px;">
-                            <iconify-icon icon="lucide:arrow-up-right" class="fs-6 text-dark"></iconify-icon>
-                          </a>
-                        </div>
-                      </div>
-                      <div class="portfolio-details text-center">
-                        <h5 class="mb-0">Full CV</h5>
-                      </div>
-                    </div>
+              </a>
+
+              <!-- Second picture card -->
+              <a href="https://equinox-libra-0be.notion.site/Panagiotis-Papadopoulos-CV-fe4eb372f5764ea8a869a35baaf9d73a" class="image-card">
+                <div class="image-wrapper">
+                  <img src="../assets/images/backgrounds/cv.png" alt="Full CV" class="img-fluid">
+                  <div class="overlay">
+                    <p >Full CV</p>
                   </div>
                 </div>
-              </div>             
+              </a>
+            </div>
+
+            <style>
+            .image-card {
+              text-decoration: none;
+              color: inherit;
+              display: block;
+              width: 300px; /* fixed width to keep them equal */
+              transition: transform 0.3s ease;
+            }
+            .image-card:hover {
+              transform: scale(1.05);
+            }
+
+            .image-wrapper {
+              position: relative;
+              overflow: hidden;
+              border-radius: 20px;
+              box-shadow: 0 6px 12px rgba(255, 255, 255, 0.15);
+            }
+
+            .image-wrapper img {
+              display: block;
+              width: 100%;
+              height: auto;
+              transition: transform 0.4s ease;
+            }
+
+            .image-card:hover img {
+              transform: scale(1.1);
+            }
+
+            .overlay {
+              
+              position:absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              background: rgba(193, 255, 114, 0.9);
+              color: #1f2a2e;
+              font-size: xx-large;
+              font-weight: bolder;
+              padding: 12px;
+              text-align: left;
+              transition: background 0.3s ease;
+            }
+            
+            .overlay:hover{
+              color:white;
+            }
+            .image-card:hover .overlay {
+              background: rgba(31, 42, 46, 0.7);
+              color: #fff;
+            }
+            </style>
+
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+
+
 
             </div>
           </div>
@@ -560,7 +605,7 @@
                             <div class="col-md-9">
                               <div class="card-body">
                                 <h5 class="fw-bold">Developing an Interactive VR CAVE for Immersive Shared  Gaming Experiences</h5>
-                                <p class="text-muted mb-2 text-align:justify"style="text-align:justify">Virtual Worlds 2023, 2(2), 162-181, DOI:<a href="https://doi.org/10.3390/virtualworlds2020010"> https://doi.org/10.3390/virtualworlds2020010</a></p>
+                                <p class="text-muted mb-2 text-align:justify">Virtual Worlds 2023, 2(2), 162-181, DOI:<a href="https://doi.org/10.3390/virtualworlds2020010"> https://doi.org/10.3390/virtualworlds2020010</a></p>
                                 <p class="mb-0">
                                  </p>
                               </div>

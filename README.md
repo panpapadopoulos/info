@@ -1,22 +1,24 @@
-# Studiova - Free Bootstrap Business Template
-#### Download
- - [Download from ThemeWagon]()
+# Panagiotis Papadopoulos - Personal Website
 
-## Getting Started
+My personal portfolio website showcasing my education, experience, publications, projects, and skills.
 
-Clone Repository
-```
-git clone https://github.com/themewagon/Studiova.git
-```
+🌐 **Live Site:** [panagiotispapadopoulos.com](https://panagiotispapadopoulos.com)
 
-## Author 
-```
-Design and code is completely written by WrapPixel design and development team.  
-```
+## Sections
+- About Me
+- Education
+- Experience
+- Publications
+- Projects
+- Skills
+- Contact
 
-## License
+## Credits
 
- - Design and Code is Copyright &copy; [WrapPixel](https://www.wrappixel.com/)
- - Licensed cover under [MIT] 
- - Distributed by [ThemeWagon](https://themewagon.com)
+Template based on Studiova by [ThemeWagon](https://themewagon.com)
 
+### License
+- Design and Code is Copyright © [WrapPixel](https://www.wrappixel.com/)
+- Licensed under [MIT]
+- Distributed by [ThemeWagon](https://themewagon.com)
+- Clone Repository: `git clone https://github.com/themewagon/Studiova.git`

@@ -76,13 +76,41 @@ section[id] {
 
   .banner-section {
     min-height: 100svh !important;
+    /* Reserve space below the first screen for the CV link. */
+    padding-top: 0;
+    padding-bottom: 132px;
+    background-color: var(--bs-dark);
+  }
+
+  .banner-section > video {
+    /* Center the crop in the opening screen, excluding the CV area below. */
+    height: 100vh !important;
+    height: 100svh !important;
+    object-fit: cover;
+    /* The face is slightly left of the source frame's center. */
+    object-position: 46.5% 50%;
+  }
+
+  .hero-content {
+    min-height: 100vh;
+    min-height: 100svh;
+    justify-content: flex-end;
     padding-top: 110px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom)) !important;
   }
 
   .hero-heading {
+    position: relative;
+    width: 100%;
     flex-direction: column;
     align-items: flex-start !important;
     gap: 1.5rem !important;
+  }
+
+  .hero-heading > .btn {
+    position: absolute;
+    top: calc(100% + max(16px, env(safe-area-inset-bottom)) + 24px);
+    left: 0;
   }
 
   .hero-heading h1 {

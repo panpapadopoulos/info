@@ -1,0 +1,993 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panagiotis Papadopoulos | LCARS Interface</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.ico">
+  <style>
+    :root {
+      --bg: #000000;
+      --panel: #111111;
+      --text: #f1dcc7;
+      --muted: #b9aa9a;
+      --orange: #f1a15b;
+      --orange-dark: #db8f59;
+      --pink: #cc8aac;
+      --purple: #9988c9;
+      --lavender: #c8a3d4;
+      --gold: #d9b169;
+      --teal: #9cc8b8;
+      --radius: 30px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: #fff0b0;
+    }
+
+    .shell {
+      width: min(1500px, calc(100% - 18px));
+      margin: 9px auto;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 12px;
+    }
+
+    .sidebar,
+    .main {
+      min-width: 0;
+    }
+
+    .lcars-card {
+      background: #000;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .sidebar .lcars-card {
+      position: sticky;
+      top: 10px;
+    }
+
+    .brand {
+      padding: 18px 20px 16px;
+      background: linear-gradient(90deg, var(--orange) 0 34%, var(--pink) 34% 64%, var(--purple) 64% 100%);
+      color: #26181d;
+      display: grid;
+      gap: 8px;
+    }
+
+    .brand .small {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: clamp(1.8rem, 2.5vw, 2.25rem);
+      line-height: 0.92;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .sidebar-body {
+      padding: 14px 0 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    .rail {
+      display: grid;
+      gap: 8px;
+    }
+
+    .nav-link {
+      display: grid;
+      grid-template-columns: 82px 1fr;
+      align-items: center;
+      min-height: 46px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: var(--panel);
+      color: var(--text);
+    }
+
+    .nav-link span {
+      display: block;
+      padding: 10px 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-link .tag {
+      background: var(--lavender);
+      color: #231720;
+      text-align: right;
+      font-weight: 900;
+    }
+
+    .nav-link:hover {
+      transform: translateX(2px);
+    }
+
+    .meta-grid,
+    .action-grid {
+      display: grid;
+      gap: 8px;
+    }
+
+    .meta,
+    .action {
+      border-radius: 24px;
+      overflow: hidden;
+      background: var(--panel);
+    }
+
+    .meta .label,
+    .action .label {
+      display: block;
+      padding: 8px 12px;
+      background: var(--orange);
+      color: #26181d;
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .action.alt .label {
+      background: var(--pink);
+    }
+
+    .meta .value,
+    .action .value {
+      display: block;
+      padding: 10px 12px 12px;
+      color: var(--text);
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    .main {
+      display: grid;
+      gap: 12px;
+    }
+
+    .top-chrome {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 12px;
+    }
+
+    .chrome-stack {
+      display: grid;
+      gap: 8px;
+    }
+
+    .chrome-row {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .chrome-block,
+    .chrome-stream,
+    .chrome-mini span {
+      min-height: 42px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      padding: 0 18px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .chrome-block {
+      justify-content: flex-end;
+      color: #26181d;
+      background: var(--orange);
+    }
+
+    .chrome-block.alt {
+      background: var(--pink);
+    }
+
+    .chrome-stream {
+      justify-content: space-between;
+      color: var(--muted);
+      background: var(--panel);
+    }
+
+    .chrome-stream strong {
+      color: var(--lavender);
+      font-size: 1.02rem;
+    }
+
+    .chrome-mini {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .chrome-mini span {
+      justify-content: center;
+      min-width: 88px;
+      background: var(--panel);
+      color: var(--muted);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+      gap: 12px;
+      padding: 0;
+    }
+
+    .hero-primary,
+    .hero-side {
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-banner {
+      min-height: 300px;
+      padding: 28px 26px;
+      border-radius: 30px;
+      border-left: 76px solid var(--orange);
+      background: #000;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner::before,
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      left: 76px;
+      height: 22px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--orange) 0 36%, var(--pink) 36% 68%, var(--lavender) 68% 100%);
+    }
+
+    .hero-banner::before {
+      top: 0;
+    }
+
+    .hero-banner::after {
+      bottom: 0;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+
+    .hero h2 {
+      margin: 0;
+      max-width: 10ch;
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      line-height: 0.9;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .hero p {
+      margin: 14px 0 0;
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+
+    .stat,
+    .status,
+    .panel,
+    .entry,
+    .skill-group,
+    .contact-card,
+    .pill {
+      background: var(--panel);
+    }
+
+    .stat {
+      padding: 14px 16px;
+      border-radius: 24px;
+    }
+
+    .stat .num {
+      display: block;
+      color: var(--gold);
+      font-size: 1.35rem;
+      font-weight: 900;
+    }
+
+    .stat .txt {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .status {
+      border-radius: 28px;
+      overflow: hidden;
+    }
+
+    .status-head {
+      padding: 12px 16px;
+      background: linear-gradient(90deg, var(--pink), var(--orange));
+      color: #26181d;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .status-body {
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .status-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .status-line strong {
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .links-row,
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--text);
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section {
+      padding: 16px 0 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .section-id,
+    .section-title {
+      min-height: 48px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      padding: 0 18px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .section-id {
+      justify-content: flex-end;
+      background: var(--orange);
+      color: #26181d;
+    }
+
+    .section-title {
+      background: var(--panel);
+      color: var(--muted);
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 10px;
+    }
+
+    .info-block,
+    .contact-grid,
+    .skills-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .panel,
+    .skill-group,
+    .contact-card {
+      border-radius: 26px;
+      padding: 16px;
+    }
+
+    .panel h3,
+    .entry h3,
+    .skill-group h3 {
+      margin: 0 0 8px;
+      font-size: 1.04rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .panel p,
+    .entry p,
+    .skill-group p,
+    .contact-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .list-reset {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .list-reset li {
+      padding-bottom: 10px;
+      border-bottom: 1px solid #222;
+    }
+
+    .list-reset li:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 155px 1fr;
+      gap: 10px;
+      align-items: start;
+      border-radius: 26px;
+      padding: 14px;
+    }
+
+    .entry-tag {
+      min-height: 100%;
+      border-radius: 22px;
+      padding: 14px 12px;
+      background: var(--orange);
+      color: #26181d;
+    }
+
+    .entry-tag .date,
+    .entry-tag .kind {
+      display: block;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .entry-tag .date {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+    }
+
+    .entry-tag .kind {
+      margin-top: 8px;
+      font-size: 1rem;
+      line-height: 1.1;
+    }
+
+    .entry-copy small {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--teal);
+      font-size: 0.86rem;
+      letter-spacing: 0.04em;
+    }
+
+    .skills-grid,
+    .contact-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .skill-group .label,
+    .contact-card .label {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--pink);
+      color: #26181d;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .footer {
+      padding: 18px 12px 28px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .footer p {
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 1080px) {
+      .shell,
+      .top-chrome,
+      .hero,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar .lcars-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .shell {
+        width: min(100% - 12px, 1500px);
+        margin: 6px auto;
+      }
+
+      .chrome-row,
+      .section-head,
+      .entry,
+      .hero-stats,
+      .skills-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-banner {
+        min-height: 240px;
+        padding: 22px 18px;
+        border-left-width: 28px;
+      }
+
+      .hero-banner::before,
+      .hero-banner::after {
+        left: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="lcars-card">
+        <div class="brand">
+          <div class="small">LCARS Personal Console</div>
+          <h1>Panagiotis Papadopoulos</h1>
+          <div class="small">Classic Theme Variant</div>
+        </div>
+        <div class="sidebar-body">
+          <nav class="rail" aria-label="Section navigation">
+            <a class="nav-link" href="#about"><span class="tag">01</span><span>About</span></a>
+            <a class="nav-link" href="#education"><span class="tag">02</span><span>Education</span></a>
+            <a class="nav-link" href="#experience"><span class="tag">03</span><span>Experience</span></a>
+            <a class="nav-link" href="#publications"><span class="tag">04</span><span>Publications</span></a>
+            <a class="nav-link" href="#projects"><span class="tag">05</span><span>Projects</span></a>
+            <a class="nav-link" href="#skills"><span class="tag">06</span><span>Skills</span></a>
+            <a class="nav-link" href="#contact"><span class="tag">07</span><span>Contact</span></a>
+          </nav>
+
+          <div class="meta-grid">
+            <div class="meta">
+              <span class="label">Location</span>
+              <span class="value">Munster, Indiana, USA</span>
+            </div>
+            <div class="meta">
+              <span class="label">Languages</span>
+              <span class="value">English, Greek</span>
+            </div>
+            <div class="meta">
+              <span class="label">Status</span>
+              <span class="value">Computer Science graduate student, Purdue University Northwest</span>
+            </div>
+          </div>
+
+          <div class="action-grid">
+            <a class="action" href="../assets/resume.pdf">
+              <span class="label">Resume</span>
+              <span class="value">Open short resume PDF</span>
+            </a>
+            <a class="action alt" href="https://equinox-libra-0be.notion.site/Panagiotis-Papadopoulos-CV-fe4eb372f5764ea8a869a35baaf9d73a">
+              <span class="label">Full CV</span>
+              <span class="value">Open complete curriculum vitae</span>
+            </a>
+            <a class="action" href="../html/index.html">
+              <span class="label">Classic UI</span>
+              <span class="value">Return to the main site design</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="lcars-card top-chrome" aria-label="LCARS header readouts">
+        <div class="chrome-stack">
+          <div class="chrome-row">
+            <div class="chrome-block">LCARS</div>
+            <div class="chrome-stream"><span>Home / Portfolio / Profile</span><strong>03-1701D</strong></div>
+          </div>
+          <div class="chrome-row">
+            <div class="chrome-block alt">Display</div>
+            <div class="chrome-stream"><span>Research, software, data systems, VR</span><strong>47-2204</strong></div>
+          </div>
+        </div>
+        <div class="chrome-mini">
+          <span>93</span>
+          <span>1853</span>
+          <span>24109</span>
+          <span>7024</span>
+          <span>322</span>
+          <span>4149</span>
+        </div>
+      </section>
+
+      <section class="lcars-card hero">
+        <div class="hero-primary">
+          <div class="hero-banner">
+            <p class="eyebrow">Sector Profile / Main Display</p>
+            <h2>Panagiotis Papadopoulos</h2>
+            <p>Computer Science graduate student at Purdue University Northwest with research-driven experience across software development, data systems, virtual reality, and interdisciplinary academic collaboration.</p>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="num">4.0</span>
+              <span class="txt">Graduate GPA</span>
+            </div>
+            <div class="stat">
+              <span class="num">3</span>
+              <span class="txt">Featured Publications</span>
+            </div>
+            <div class="stat">
+              <span class="num">2025</span>
+              <span class="txt">Master's Start</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="status">
+            <div class="status-head">System Status</div>
+            <div class="status-body">
+              <div class="status-line"><span>Primary Track</span><strong>Computer Science</strong></div>
+              <div class="status-line"><span>Institution</span><strong>Purdue University Northwest</strong></div>
+              <div class="status-line"><span>Personal Email</span><strong><a href="mailto:giotispapadopoulos@outlook.com">Outlook</a></strong></div>
+              <div class="status-line"><span>Academic Email</span><strong><a href="mailto:papadop@purdue.edu">Purdue</a></strong></div>
+              <div class="status-line"><span>Phone</span><strong><a href="tel:+12194666720">+1 (219) 466-6720</a></strong></div>
+            </div>
+          </div>
+          <div class="links-row">
+            <a class="pill" href="https://www.linkedin.com/in/panagiotis-papadopoulos-0b1a291ab/">LinkedIn</a>
+            <a class="pill" href="https://github.com/panpapadopoulos">GitHub</a>
+            <a class="pill" href="https://scholar.google.com/citations?user=QK3LqOYAAAAJ&hl=en">Scholar</a>
+            <a class="pill" href="mailto:giotispapadopoulos@outlook.com">Email</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="lcars-card section" id="about">
+        <div class="section-head">
+          <div class="section-id">01</div>
+          <div class="section-title">About</div>
+        </div>
+        <div class="two-col">
+          <div class="panel">
+            <h3>Profile Summary</h3>
+            <p>Computer Science graduate student at Purdue University Northwest with a 4.0 GPA and a strong background in research-driven software development, data systems, and immersive technologies. Valedictorian graduate with hands-on experience in Java, Python, SQL, Docker, and distributed systems through funded European research projects. Published researcher in VR/HCI and electromagnetic measurement studies, with proven ability to collaborate in multidisciplinary teams and translate research into working systems.</p>
+          </div>
+          <div class="panel">
+            <h3>Basic Information</h3>
+            <ul class="list-reset">
+              <li><strong>Academic Email:</strong> <a href="mailto:papadop@purdue.edu">papadop@purdue.edu</a></li>
+              <li><strong>Personal Email:</strong> <a href="mailto:giotispapadopoulos@outlook.com">giotispapadopoulos@outlook.com</a></li>
+              <li><strong>Phone:</strong> <a href="tel:+12194666720">+1 (219) 466-6720</a></li>
+              <li><strong>Location:</strong> Munster IN, USA</li>
+              <li><strong>Languages:</strong> English, Greek</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="lcars-card section" id="education">
+        <div class="section-head">
+          <div class="section-id">02</div>
+          <div class="section-title">Education</div>
+        </div>
+        <div class="info-block">
+          <article class="entry">
+            <div class="entry-tag">
+              <span class="date">2025 - Present</span>
+              <span class="kind">Master's Degree</span>
+            </div>
+            <div class="entry-copy">
+              <h3>Master's in Computer Science</h3>
+              <small>Purdue University Northwest</small>
+              <p>GPA: 4.0</p>
+            </div>
+          </article>
+
+          <article class="entry">
+            <div class="entry-tag">
+              <span class="date">2019 - 2024</span>
+              <span class="kind">Bachelor's Degree</span>
+            </div>
+            <div class="entry-copy">
+              <h3>Bachelor's in Informatics & Telecommunications</h3>
+              <small>University of the Peloponnese, Department of Informatics & Telecommunications</small>
+              <p>Grade: Excellent, 8.72/10.00. Valedictorian for the graduating class of 2024. Thesis: "Virtual Reality in Theater: Exploring Actor-Machine Interactions." Received a scholarship from the Sarantopoulos welfare institution for sustained academic excellence.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="lcars-card section" id="experience">
+        <div class="section-head">
+          <div class="section-id">03</div>
+          <div class="section-title">Experience</div>
+        </div>
+        <div class="info-block">
+          <article class="entry">
+            <div class="entry-tag">
+              <span class="date">Feb 2025 - Present</span>
+              <span class="kind">Teaching</span>
+            </div>
+            <div class="entry-copy">
+              <h3>Substitute Teacher K-12</h3>
+              <small>School Town of Munster</small>
+              <p>Serving across K-12 classrooms in Munster, Indiana.</p>
+            </div>
+          </article>
+
+          <article class="entry">
+            <div class="entry-tag">
+              <span class="date">2021 - Present</span>
+              <span class="kind">Research</span>
+            </div>
+            <div class="entry-copy">
+              <h3>Member of HCI-VR Lab</h3>
+              <small>HCI-VR Lab</small>
+              <p>Designed and implemented components of an interactive VR Tunnel for an EU-funded research project. Collaborated with multidisciplinary teams on VR interaction design, system integration, and experimental evaluation. Contributed as an undergraduate scholar in the CrossCult project at the University of the Peloponnese.</p>
+              <div class="footer-links">
+                <a class="pill" href="https://hci-vr.dit.uop.gr/">Project Site</a>
+                <a class="pill" href="https://diavgeia.gov.gr/decision/view/%CE%A82%CE%A6%CE%98469%CE%927%CE%96-%CE%A397">Contract Record</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="entry">
+            <div class="entry-tag">
+              <span class="date">2022 - 2024</span>
+              <span class="kind">Research</span>
+            </div>
+            <div class="entry-copy">
+              <h3>Pandora - Observatory of Electromagnetic Fields Emitted from 5G</h3>
+              <small>Research Assistant</small>
+              <p>Conducted RF-EMF measurement campaigns across multiple locations using specialized equipment and contributed to data collection and analysis supporting published research on 5G exposure assessment.</p>
+              <div class="footer-links">
+                <a class="pill" href="http://wmclab.uop.gr/pandora/team.html">Project Details</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="lcars-card section" id="publications">
+        <div class="section-head">
+          <div class="section-id">04</div>
+          <div class="section-title">Publications</div>
+        </div>
+        <div class="info-block">
+          <article class="entry">
+            <div class="entry-tag">
+              <span class="date">Dec 2025</span>
+              <span class="kind">Journal</span>
+            </div>
+            <div class="entry-copy">
+              <h3>RF-EMF Exposure in the Transition to 5G: A Multi-dimensional Measurement Campaign in the Peloponnese Region of Greece</h3>
+              <small>Environmental Monitoring and Assessment, 2025</small>
+              <p><a href="https://doi.org/10.1007/s10661-025-14876-9">DOI: 10.1007/s10661-025-14876-9</a></p>
+            </div>
+          </article>
+
+          <article class="entry">
+            <div class="entry-tag">
+              <span class="date">May 19, 2023</span>
+              <span class="kind">Journal</span>
+            </div>
+            <div class="entry-copy">
+              <h3>Developing an Interactive VR CAVE for Immersive Shared Gaming Experiences</h3>
+              <small>Virtual Worlds 2023, 2(2), 162-181</small>
+              <p><a href="https://doi.org/10.3390/virtualworlds2020010">DOI: 10.3390/virtualworlds2020010</a></p>
+            </div>
+          </article>
+
+          <article class="entry">
+            <div class="entry-tag">
+              <span class="date">May 2024</span>
+              <span class="kind">Conference</span>
+            </div>
+            <div class="entry-copy">
+              <h3>Beyond the Stage: Advancements in Human-Computer Interactions in a VR Theater</h3>
+              <small>Digital Culture & AudioVisual Challenges (DCAC 2024), Corfu, May 24-25, 2024</small>
+              <p><a href="https://avarts.ionio.gr/dcac/2024/en/presentations/1364/">Presentation Link</a></p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="lcars-card section" id="projects">
+        <div class="section-head">
+          <div class="section-id">05</div>
+          <div class="section-title">Projects</div>
+        </div>
+        <div class="info-block">
+          <article class="entry">
+            <div class="entry-tag">
+              <span class="date">Data Systems</span>
+              <span class="kind">Project</span>
+            </div>
+            <div class="entry-copy">
+              <h3>Postgres & Chill - Movie Recommendation System</h3>
+              <p>Built a data-driven recommender using PostgreSQL, Docker, and Spring Boot to generate personalized movie suggestions.</p>
+              <div class="footer-links">
+                <a class="pill" href="https://github.com/panagiotispapadopoulos/Postgres-and-Chill">GitHub Repository</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="entry">
+            <div class="entry-tag">
+              <span class="date">Data Analytics</span>
+              <span class="kind">Project</span>
+            </div>
+            <div class="entry-copy">
+              <h3>Trending Videos Analysis using MongoDB</h3>
+              <p>Large-scale aggregation pipeline analysis on YouTube trending data with result visualization via Metabase.</p>
+            </div>
+          </article>
+
+          <article class="entry">
+            <div class="entry-tag">
+              <span class="date">Data Mining</span>
+              <span class="kind">Project</span>
+            </div>
+            <div class="entry-copy">
+              <h3>Frequent Collaboration Patterns Mining</h3>
+              <p>Analyzed academic publications to extract collaboration patterns using WEKA and Python.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="lcars-card section" id="skills">
+        <div class="section-head">
+          <div class="section-id">06</div>
+          <div class="section-title">Skills</div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-group">
+            <span class="label">Programming Languages</span>
+            <h3>Core Development</h3>
+            <p>Java, Python, C, PHP, MATLAB, Unix Shell Scripting, Promela (SPIN)</p>
+          </div>
+          <div class="skill-group">
+            <span class="label">Databases</span>
+            <h3>Data Storage</h3>
+            <p>PostgreSQL, MongoDB</p>
+          </div>
+          <div class="skill-group">
+            <span class="label">Web & Markup</span>
+            <h3>Content Systems</h3>
+            <p>HTML, CSS, Markdown, LaTeX</p>
+          </div>
+          <div class="skill-group">
+            <span class="label">Tools & Frameworks</span>
+            <h3>Workflow</h3>
+            <p>Docker, Apache Hadoop, WEKA, NetBeans, Makefile, Visual Paradigm</p>
+          </div>
+          <div class="skill-group">
+            <span class="label">Design & CMS</span>
+            <h3>Interface Work</h3>
+            <p>Figma, WordPress</p>
+          </div>
+          <div class="skill-group">
+            <span class="label">Academic Focus</span>
+            <h3>Research Areas</h3>
+            <p>VR/HCI, immersive systems, software engineering, RF-EMF measurement studies, data analysis</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="lcars-card section" id="contact">
+        <div class="section-head">
+          <div class="section-id">07</div>
+          <div class="section-title">Contact</div>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <span class="label">Address</span>
+            <p>Munster IN, USA</p>
+          </div>
+          <div class="contact-card">
+            <span class="label">Phone</span>
+            <p><a href="tel:+12194666720">+1 (219) 466-6720</a></p>
+          </div>
+          <div class="contact-card">
+            <span class="label">Academic Email</span>
+            <p><a href="mailto:papadop@purdue.edu">papadop@purdue.edu</a></p>
+          </div>
+          <div class="contact-card">
+            <span class="label">Personal Email</span>
+            <p><a href="mailto:giotispapadopoulos@outlook.com">giotispapadopoulos@outlook.com</a></p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="lcars-card footer">
+        <p>Panagiotis Papadopoulos 2026. LCARS-inspired portfolio variant.</p>
+        <p>Reference style adjusted toward the classic LCARS theme used on TheLCARS.com.</p>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

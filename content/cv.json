@@ -1,136 +1,172 @@
 {
   "personal": {
-    "name": "Panagiotis Papadopoulos",
-    "title": "M.S. Computer Science Candidate",
-    "email": "giotispapadopoulos@outlook.com",
-    "academicEmail": "papadop@purdue.edu",
-    "phone": "+1 (219) 466-6720",
-    "location": "Munster, IN, USA",
-    "website": "https://panagiotispapadopoulos.com",
-    "linkedin": "https://www.linkedin.com/in/panagiotis-papadopoulos-0b1a291ab/",
     "github": "https://github.com/panpapadopoulos",
     "scholar": "https://scholar.google.com/citations?user=QK3LqOYAAAAJ&hl=en",
+    "summary": "Computer Science graduate student at Purdue University Northwest (GPA 4.0) with a strong background in research-driven software development, data systems, and immersive technologies. Valedictorian graduate with hands-on experience in Java, Python, SQL, Docker, and distributed systems through funded European research projects. Published researcher in VR/HCI and electromagnetic measurement studies, with proven ability to collaborate in multidisciplinary teams and translate research into working systems.",
+    "name": "Panagiotis Papadopoulos",
+    "phone": "+1 (219) 466-6720",
+    "academicEmail": "papadop@purdue.edu",
+    "location": "Munster, IN, USA",
+    "title": "M.S. Computer Science Candidate",
+    "website": "https://panagiotispapadopoulos.com",
     "orcid": "https://orcid.org/0009-0006-3062-3999",
-    "summary": "Computer Science graduate student at Purdue University Northwest (GPA 4.0) with a strong background in research-driven software development, data systems, and immersive technologies. Valedictorian graduate with hands-on experience in Java, Python, SQL, Docker, and distributed systems through funded European research projects. Published researcher in VR/HCI and electromagnetic measurement studies, with proven ability to collaborate in multidisciplinary teams and translate research into working systems."
+    "email": "giotispapadopoulos@outlook.com",
+    "linkedin": "https://www.linkedin.com/in/panagiotis-papadopoulos-0b1a291ab/"
   },
-  "education": [
+  "skills": [
     {
-      "degree": "M.S. Computer Science",
-      "institution": "Purdue University Northwest",
-      "location": "Hammond, IN, USA",
-      "year": "Aug 2025 – May 2027 (expected)",
-      "grade": "GPA 4.00/4.00",
-      "honors": "",
-      "thesis": "",
-      "documents": []
-    },
-    {
-      "degree": "B.S. Informatics & Telecommunications",
-      "institution": "University of the Peloponnese, Department of Informatics & Telecommunications",
-      "location": "Tripoli, Greece",
-      "year": "Oct 2019 – Jul 2024",
-      "grade": "8.72/10.00 (“Excellent”)",
-      "honors": "Valedictorian, Class of 2024. Scholarship from the Sarantopoulos Welfare Institution for the full degree, awarded for high performance in high school.",
-      "thesis": "Virtual Reality in Theater: Exploring Actor-Machine Interactions",
-      "documents": [{ "label": "Diploma", "file": "/uploads/bsc-diploma.pdf" }]
-    },
-    {
-      "degree": "High School Diploma",
-      "institution": "Senior High School of Tegea",
-      "location": "Tegea, Arcadia, Greece",
-      "year": "Sep 2016 – Jun 2019",
-      "grade": "19.3/20.0",
-      "honors": "",
-      "thesis": "",
-      "documents": [{ "label": "Diploma", "file": "/uploads/high-school-diploma.pdf" }]
-    }
-  ],
-  "experience": [
-    {
-      "role": "Permanent Substitute Teacher (K–12)",
-      "organization": "School Town of Munster",
-      "location": "Munster, IN, USA",
-      "period": "Feb 2025 – Present",
-      "bulletPoints": [
-        "Manage K–12 classrooms and communicate with students, faculty, and administrators in fast-paced environments."
-      ],
-      "documents": []
-    },
-    {
-      "role": "Research Assistant & Member",
-      "organization": "HCI-VR Lab, Department of Informatics & Telecommunications, University of the Peloponnese",
-      "location": "Tripoli, Greece",
-      "period": "Jul 2021 – Sep 2024",
-      "bulletPoints": [
-        "Designed and implemented components of an interactive VR Tunnel for an EU-funded research project.",
-        "Collaborated with multidisciplinary teams on VR interaction design, system integration, and experimental evaluation.",
-        "Undergraduate scholar in “CrossCult: Empowering reuse of digital cultural heritage in context-aware crosscuts of European history” (Code 0279), part of the National Participation in European Research Projects by the University of the Peloponnese for the years 2014–2016.",
-        "Project details: [hci-vr.dit.uop.gr](https://hci-vr.dit.uop.gr/), contract at [diavgeia.gov.gr](https://diavgeia.gov.gr/decision/view/Ψ2ΦΘ469Β7Δ-Σ97)."
-      ],
-      "documents": []
-    },
-    {
-      "role": "Research Assistant",
-      "organization": "PANDORA – Observatory of Electromagnetic Fields Emitted from 5G, University of the Peloponnese",
-      "location": "Tripoli, Greece",
-      "period": "May 2022 – Sep 2024",
-      "bulletPoints": [
-        "Conducted RF-EMF measurement campaigns across multiple locations using state-of-the-art measurement equipment.",
-        "Collected and analyzed experimental data supporting published research on 5G exposure assessment.",
-        "Project details: [wmclab.uop.gr/pandora](http://wmclab.uop.gr/pandora/team.html)."
-      ],
-      "documents": [
-        { "label": "Recommendation letter, Prof. George Tsoulos", "file": "/uploads/recommendation-letter-tsoulos.pdf" }
+      "category": "Programming Languages",
+      "items": [
+        "Java",
+        "Python",
+        "C",
+        "PHP",
+        "MATLAB",
+        "Unix Shell Scripting",
+        "Promela (SPIN)"
       ]
     },
     {
-      "role": "Research Assistant",
-      "organization": "ENIRISST+ Research Infrastructure, University of the Peloponnese",
-      "location": "Greece",
-      "period": "May 2023 – Aug 2023",
-      "bulletPoints": [
-        "Contributed to validation and methodology assessment of research services developed by the University of the Peloponnese.",
-        "Participated in quality assurance and documentation processes for research infrastructure services.",
-        "Project details: [enirisst-plus.gr](https://enirisst-plus.gr/), contract at [diavgeia.gov.gr](https://diavgeia.gov.gr/decision/view/%CE%A8%CE%A5%CE%9B%CE%99469%CE%927%CE%94-%CE%A6%CE%A1%CE%94)."
-      ],
+      "category": "Data & Databases",
+      "items": [
+        "SQL",
+        "PostgreSQL",
+        "MongoDB"
+      ]
+    },
+    {
+      "category": "Tools & Frameworks",
+      "items": [
+        "Docker",
+        "Apache Hadoop",
+        "Spring Boot",
+        "WEKA",
+        "Metabase",
+        "NetBeans",
+        "Makefile",
+        "Visual Paradigm"
+      ]
+    },
+    {
+      "category": "Web & Markup",
+      "items": [
+        "HTML",
+        "CSS",
+        "Markdown",
+        "LaTeX"
+      ]
+    },
+    {
+      "category": "Design & CMS",
+      "items": [
+        "Figma",
+        "WordPress"
+      ]
+    }
+  ],
+  "seminars": [
+    {
+      "title": "Job Search Techniques",
+      "organization": "Liaison Office, University of the Peloponnese",
+      "location": "",
+      "period": "May 2023",
+      "bulletPoints": [],
       "documents": []
     },
     {
-      "role": "Assistant",
-      "organization": "Family business (mini market, butcher shop and gas station)",
+      "title": "Make Your Resume Stand Out",
+      "organization": "Growth Hub",
       "location": "",
-      "period": "Seasonal, 2014 – 2024",
+      "period": "Apr 2022",
+      "bulletPoints": [],
+      "documents": []
+    }
+  ],
+  "leadership": [
+    {
+      "title": "Chair of Coordinating Committee / Coordinator",
+      "organization": "Regional political organization",
+      "location": "",
+      "period": "2022 – Present",
+      "bulletPoints": [],
+      "documents": []
+    },
+    {
+      "title": "School President",
+      "organization": "Senior High School of Tegea",
+      "location": "",
+      "period": "2018 – 2019",
+      "bulletPoints": [],
+      "documents": []
+    },
+    {
+      "title": "Class President",
+      "organization": "Junior and Senior High School",
+      "location": "",
+      "period": "2015 – 2019",
       "bulletPoints": [
-        "Assisted with inventory management, stock organization, and cashier operations.",
-        "Supported daily business operations in a customer-facing retail environment."
+        "Class president for four consecutive school years."
       ],
       "documents": []
     }
   ],
-  "certificates": [
+  "outreach": [
     {
-      "title": "Certificate of Proficiency in English (C2)",
-      "organization": "University of Michigan",
-      "location": "Tripoli, Greece",
-      "period": "Dec 2016",
-      "bulletPoints": ["Registration #8982569184."],
+      "title": "Lab Assistant, Programming II (C)",
+      "organization": "Department of Informatics & Telecommunications, University of the Peloponnese",
+      "location": "",
+      "period": "Spring 2024",
+      "bulletPoints": [],
       "documents": []
     },
     {
-      "title": "NARDA training: “Installation and usage for Narda SRM-3006, AMB-8059/03 and AMS-8061/00”",
-      "organization": "ACTA Ltd, at the University of the Peloponnese",
-      "location": "Tripoli, Greece",
-      "period": "Oct 2022",
-      "bulletPoints": ["Held on 5–7 and 12 October 2022."],
-      "documents": [{ "label": "Certificate", "file": "/uploads/narda-training-certificate.pdf" }]
+      "title": "Career Days",
+      "organization": "Department of Informatics & Telecommunications, University of the Peloponnese",
+      "location": "",
+      "period": "May 2022, May 2023, May 2024",
+      "bulletPoints": [
+        "Contributed to academic outreach activities; co-designed an [information system for Career Day 2023](https://github.com/ioannis-kokkalis/uop-cdiq/tree/2023)."
+      ],
+      "documents": []
     },
     {
-      "title": "Student Ambassador for the European Parliament",
-      "organization": "European Parliament",
+      "title": "Live a Day Like a Student",
+      "organization": "Department of Informatics & Telecommunications, University of the Peloponnese",
       "location": "",
-      "period": "2018 – 2019",
+      "period": "Apr 2022, May 2023, Apr 2024",
+      "bulletPoints": [
+        "Introduced prospective students to academic life."
+      ],
+      "documents": []
+    },
+    {
+      "title": "Scientific & Informative Seminars",
+      "organization": "Department of Informatics & Telecommunications, University of the Peloponnese",
+      "location": "",
+      "period": "2023",
+      "bulletPoints": [
+        "Tourism, Transportation, and Environment: Technological Challenges and Practices (Jun 2023).",
+        "SodaSense Informative Seminar (Mar 2023)."
+      ],
+      "documents": []
+    },
+    {
+      "title": "Volunteer",
+      "organization": "TEDx Klonatzidika 2023",
+      "location": "",
+      "period": "May 2023",
+      "bulletPoints": [
+        "Supported production team activities."
+      ],
+      "documents": []
+    },
+    {
+      "title": "Volunteer",
+      "organization": "Panhellenic Conference on Electronics and Telecommunications (PACET 2022)",
+      "location": "Tripoli, Greece",
+      "period": "Dec 2022",
       "bulletPoints": [],
-      "documents": [{ "label": "Certificate", "file": "/uploads/european-parliament-ambassador-certificate.pdf" }]
+      "documents": []
     }
   ],
   "publications": [
@@ -150,7 +186,12 @@
       "doi": "",
       "url": "",
       "summary": "",
-      "documents": [{ "label": "Presentation certificate", "file": "/uploads/performing-space-2024.pdf" }]
+      "documents": [
+        {
+          "label": "Presentation certificate",
+          "file": "/uploads/performing-space-2024.pdf"
+        }
+      ]
     },
     {
       "title": "Brave New World: Weaving Interactive Directions and Dystopian Dramaturgy with Virtual Reality Theatre Interactions",
@@ -198,6 +239,121 @@
       "documents": []
     }
   ],
+  "education": [
+    {
+      "degree": "M.S. Computer Science",
+      "institution": "Purdue University Northwest",
+      "location": "Hammond, IN, USA",
+      "year": "Aug 2025 – May 2027 (expected)",
+      "grade": "GPA 4.00/4.00",
+      "honors": "",
+      "thesis": "",
+      "documents": []
+    },
+    {
+      "degree": "B.S. Informatics & Telecommunications",
+      "institution": "University of the Peloponnese, Department of Informatics & Telecommunications",
+      "location": "Tripoli, Greece",
+      "year": "Oct 2019 – Jul 2024",
+      "grade": "8.72/10.00 (“Excellent”)",
+      "honors": "Valedictorian, Class of 2024. Scholarship from the Sarantopoulos Welfare Institution for the full degree, awarded for high performance in high school.",
+      "thesis": "Virtual Reality in Theater: Exploring Actor-Machine Interactions",
+      "documents": [
+        {
+          "label": "Diploma",
+          "file": "/uploads/bsc-diploma.pdf"
+        }
+      ]
+    },
+    {
+      "degree": "High School Diploma",
+      "institution": "Senior High School of Tegea",
+      "location": "Tegea, Arcadia, Greece",
+      "year": "Sep 2016 – Jun 2019",
+      "grade": "19.3/20.0",
+      "honors": "",
+      "thesis": "",
+      "documents": [
+        {
+          "label": "Diploma",
+          "file": "/uploads/high-school-diploma.pdf"
+        }
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "role": "Permanent Substitute Teacher (K–12)",
+      "organization": "School Town of Munster",
+      "location": "Munster, IN, USA",
+      "period": "Feb 2025 – Present",
+      "bulletPoints": [
+        "Manage K–12 classrooms and communicate with students, faculty, and administrators in fast-paced environments."
+      ],
+      "documents": []
+    },
+    {
+      "role": "Greek School Teacher",
+      "organization": "St. George Greek School - St. George Greek Orthodox Church",
+      "location": "Schererville Indiana",
+      "period": "Aug 2026 - Present",
+      "bulletPoints": []
+    },
+    {
+      "role": "Research Assistant & Member",
+      "organization": "HCI-VR Lab, Department of Informatics & Telecommunications, University of the Peloponnese",
+      "location": "Tripoli, Greece",
+      "period": "Jul 2021 – Sep 2024",
+      "bulletPoints": [
+        "Designed and implemented components of an interactive VR Tunnel for an EU-funded research project.",
+        "Collaborated with multidisciplinary teams on VR interaction design, system integration, and experimental evaluation.",
+        "Undergraduate scholar in “CrossCult: Empowering reuse of digital cultural heritage in context-aware crosscuts of European history” (Code 0279), part of the National Participation in European Research Projects by the University of the Peloponnese for the years 2014–2016.",
+        "Project details: [hci-vr.dit.uop.gr](https://hci-vr.dit.uop.gr/), contract at [diavgeia.gov.gr](https://diavgeia.gov.gr/decision/view/Ψ2ΦΘ469Β7Δ-Σ97)."
+      ],
+      "documents": []
+    },
+    {
+      "role": "Research Assistant",
+      "organization": "PANDORA – Observatory of Electromagnetic Fields Emitted from 5G, University of the Peloponnese",
+      "location": "Tripoli, Greece",
+      "period": "May 2022 – Sep 2024",
+      "bulletPoints": [
+        "Conducted RF-EMF measurement campaigns across multiple locations using state-of-the-art measurement equipment.",
+        "Collected and analyzed experimental data supporting published research on 5G exposure assessment.",
+        "Project details: [wmclab.uop.gr/pandora](http://wmclab.uop.gr/pandora/team.html)."
+      ],
+      "documents": [
+        {
+          "label": "Recommendation letter, Prof. George Tsoulos",
+          "file": "/uploads/recommendation-letter-tsoulos.pdf"
+        }
+      ]
+    },
+    {
+      "role": "Research Assistant",
+      "organization": "ENIRISST+ Research Infrastructure, University of the Peloponnese",
+      "location": "Greece",
+      "period": "May 2023 – Aug 2023",
+      "bulletPoints": [
+        "Contributed to validation and methodology assessment of research services developed by the University of the Peloponnese.",
+        "Participated in quality assurance and documentation processes for research infrastructure services.",
+        "Project details: [enirisst-plus.gr](https://enirisst-plus.gr/), contract at [diavgeia.gov.gr](https://diavgeia.gov.gr/decision/view/%CE%A8%CE%A5%CE%9B%CE%99469%CE%927%CE%94-%CE%A6%CE%A1%CE%94)."
+      ],
+      "documents": []
+    },
+    {
+      "role": "Assistant",
+      "organization": "Family business (mini market, butcher shop and gas station)",
+      "location": "",
+      "period": "Seasonal, 2014 – 2024",
+      "bulletPoints": [
+        "Assisted with inventory management, stock organization, and cashier operations.",
+        "Supported daily business operations in a customer-facing retail environment."
+      ],
+      "documents": []
+    }
+  ],
+  "projectsIntro": "A selection of academic projects completed at educational institutions, some of which are not publicly available due to institutional restrictions, and personal projects that can be shared on request.",
   "conferences": [
     {
       "title": "International Conference and Workshops Performing Space 2024",
@@ -221,7 +377,12 @@
       "location": "Corfu, Greece",
       "period": "May 2024",
       "bulletPoints": [],
-      "documents": [{ "label": "Certificate of participation", "file": "/uploads/dcac-2024-attendance.pdf" }]
+      "documents": [
+        {
+          "label": "Certificate of participation",
+          "file": "/uploads/dcac-2024-attendance.pdf"
+        }
+      ]
     },
     {
       "title": "11th International Congress on Transportation Research (ICTR 2023)",
@@ -237,7 +398,12 @@
       "location": "Tripoli, Greece",
       "period": "Dec 2022",
       "bulletPoints": [],
-      "documents": [{ "label": "Certificate of attendance", "file": "/uploads/pacet-2022-attendance.pdf" }]
+      "documents": [
+        {
+          "label": "Certificate of attendance",
+          "file": "/uploads/pacet-2022-attendance.pdf"
+        }
+      ]
     },
     {
       "title": "2nd Student Research and Science Conference 2018",
@@ -245,25 +411,12 @@
       "location": "",
       "period": "Dec 2018",
       "bulletPoints": [],
-      "documents": [{ "label": "Certificate of attendance", "file": "/uploads/demokritos-2018-attendance.pdf" }]
-    }
-  ],
-  "seminars": [
-    {
-      "title": "Job Search Techniques",
-      "organization": "Liaison Office, University of the Peloponnese",
-      "location": "",
-      "period": "May 2023",
-      "bulletPoints": [],
-      "documents": []
-    },
-    {
-      "title": "Make Your Resume Stand Out",
-      "organization": "Growth Hub",
-      "location": "",
-      "period": "Apr 2022",
-      "bulletPoints": [],
-      "documents": []
+      "documents": [
+        {
+          "label": "Certificate of attendance",
+          "file": "/uploads/demokritos-2018-attendance.pdf"
+        }
+      ]
     }
   ],
   "volunteering": [
@@ -272,7 +425,9 @@
       "organization": "TEDx Klonatzidika 2024",
       "location": "",
       "period": "Dec 2023 – May 2024",
-      "bulletPoints": ["Assigned to the production team and the marketing and social media team."],
+      "bulletPoints": [
+        "Assigned to the production team and the marketing and social media team."
+      ],
       "documents": []
     },
     {
@@ -283,7 +438,12 @@
       "bulletPoints": [
         "Staff/volunteer at Check Point 60 (athlete stop) of SPARTATHLON, the historic international ultra-distance race."
       ],
-      "documents": [{ "label": "Certificates", "file": "/uploads/spartathlon-certificate.pdf" }]
+      "documents": [
+        {
+          "label": "Certificates",
+          "file": "/uploads/spartathlon-certificate.pdf"
+        }
+      ]
     },
     {
       "title": "Trainer",
@@ -293,7 +453,12 @@
       "bulletPoints": [
         "Led a four-hour skills workshop at the University of the Peloponnese on 16 December 2022, organized by the Sports and Cultural Lab."
       ],
-      "documents": [{ "label": "Certificate", "file": "/uploads/values-for-young-europeans-2022-certificate.pdf" }]
+      "documents": [
+        {
+          "label": "Certificate",
+          "file": "/uploads/values-for-young-europeans-2022-certificate.pdf"
+        }
+      ]
     },
     {
       "title": "Organizing Committee Member",
@@ -306,72 +471,19 @@
       "documents": []
     }
   ],
-  "outreach": [
-    {
-      "title": "Lab Assistant, Programming II (C)",
-      "organization": "Department of Informatics & Telecommunications, University of the Peloponnese",
-      "location": "",
-      "period": "Spring 2024",
-      "bulletPoints": [],
-      "documents": []
-    },
-    {
-      "title": "Career Days",
-      "organization": "Department of Informatics & Telecommunications, University of the Peloponnese",
-      "location": "",
-      "period": "May 2022, May 2023, May 2024",
-      "bulletPoints": [
-        "Contributed to academic outreach activities; co-designed an [information system for Career Day 2023](https://github.com/ioannis-kokkalis/uop-cdiq/tree/2023)."
-      ],
-      "documents": []
-    },
-    {
-      "title": "Live a Day Like a Student",
-      "organization": "Department of Informatics & Telecommunications, University of the Peloponnese",
-      "location": "",
-      "period": "Apr 2022, May 2023, Apr 2024",
-      "bulletPoints": ["Introduced prospective students to academic life."],
-      "documents": []
-    },
-    {
-      "title": "Scientific & Informative Seminars",
-      "organization": "Department of Informatics & Telecommunications, University of the Peloponnese",
-      "location": "",
-      "period": "2023",
-      "bulletPoints": [
-        "Tourism, Transportation, and Environment: Technological Challenges and Practices (Jun 2023).",
-        "SodaSense Informative Seminar (Mar 2023)."
-      ],
-      "documents": []
-    },
-    {
-      "title": "Volunteer",
-      "organization": "TEDx Klonatzidika 2023",
-      "location": "",
-      "period": "May 2023",
-      "bulletPoints": ["Supported production team activities."],
-      "documents": []
-    },
-    {
-      "title": "Volunteer",
-      "organization": "Panhellenic Conference on Electronics and Telecommunications (PACET 2022)",
-      "location": "Tripoli, Greece",
-      "period": "Dec 2022",
-      "bulletPoints": [],
-      "documents": []
-    }
-  ],
-  "languages": [
-    { "language": "Greek", "proficiency": "Native" },
-    { "language": "English", "proficiency": "C2 — Certificate of Proficiency in English, University of Michigan (Dec 2016)" }
-  ],
-  "projectsIntro": "A selection of academic projects completed at educational institutions, some of which are not publicly available due to institutional restrictions, and personal projects that can be shared on request.",
   "projects": [
     {
       "title": "Postgres & Chill",
       "year": "",
       "tagline": "Movie recommendation system",
-      "stack": ["PostgreSQL", "Docker", "Spring Boot", "Java", "SQL", "HTML/CSS/JS"],
+      "stack": [
+        "PostgreSQL",
+        "Docker",
+        "Spring Boot",
+        "Java",
+        "SQL",
+        "HTML/CSS/JS"
+      ],
       "url": "",
       "github": "https://github.com/panpapadopoulos/PostgresAndChill",
       "description": "A data-driven movie recommender that uses user ratings to generate personalized suggestions."
@@ -380,7 +492,10 @@
       "title": "Frequent Collaboration Patterns Mining",
       "year": "",
       "tagline": "Data mining with WEKA",
-      "stack": ["WEKA", "Python"],
+      "stack": [
+        "WEKA",
+        "Python"
+      ],
       "url": "",
       "github": "",
       "description": "Processed researchers’ publications to find collaboration patterns between them."
@@ -389,7 +504,11 @@
       "title": "Trending Videos Analysis",
       "year": "",
       "tagline": "MongoDB aggregation pipelines",
-      "stack": ["MongoDB", "Metabase", "Python"],
+      "stack": [
+        "MongoDB",
+        "Metabase",
+        "Python"
+      ],
       "url": "",
       "github": "",
       "description": "Analyzed data on the latest trending YouTube videos with MongoDB aggregation pipelines, with data conversion and visualization of the results."
@@ -398,7 +517,12 @@
       "title": "ASTERAS",
       "year": "",
       "tagline": "Search engine for researchers based on their bibliography",
-      "stack": ["Java", "Apache Lucene", "JavaFX", "Apache Maven"],
+      "stack": [
+        "Java",
+        "Apache Lucene",
+        "JavaFX",
+        "Apache Maven"
+      ],
       "url": "",
       "github": "",
       "description": "Indexes and searches researchers’ BibTeX files with the Apache Lucene library, with a graphical interface."
@@ -407,7 +531,13 @@
       "title": "Transaction Analysis",
       "year": "",
       "tagline": "MapReduce jobs on Apache Hadoop",
-      "stack": ["Hadoop", "HDFS", "Java", "Python", "Gnuplot"],
+      "stack": [
+        "Hadoop",
+        "HDFS",
+        "Java",
+        "Python",
+        "Gnuplot"
+      ],
       "url": "",
       "github": "",
       "description": "Analyzed an e-commerce fashion company’s transactions by running MapReduce jobs, including a local HDFS setup and visualization of the results."
@@ -416,7 +546,9 @@
       "title": "Rayleigh Channel Simulation",
       "year": "",
       "tagline": "1, 2 and 4 Rayleigh channels with a rake receiver",
-      "stack": ["MATLAB"],
+      "stack": [
+        "MATLAB"
+      ],
       "url": "",
       "github": "",
       "description": "Simulated Rayleigh channel behavior with AWGN and reception through a rake receiver: BER, SER, eye diagram and constellation chart."
@@ -425,7 +557,10 @@
       "title": "GooseGame",
       "year": "",
       "tagline": "Multiplayer board game",
-      "stack": ["Java", "NetBeans"],
+      "stack": [
+        "Java",
+        "NetBeans"
+      ],
       "url": "",
       "github": "",
       "description": "A simulation of the board game with terminal input, simple terminal graphics and all the moves of the actual game."
@@ -434,7 +569,9 @@
       "title": "Stray Animal Shelter App",
       "year": "",
       "tagline": "Mobile app GUI design",
-      "stack": ["Figma"],
+      "stack": [
+        "Figma"
+      ],
       "url": "",
       "github": "",
       "description": "GUI design for a stray animal shelter organization’s mobile app."
@@ -443,7 +580,11 @@
       "title": "Social Network Users and Their Activity on POIs",
       "year": "",
       "tagline": "Database design and web interface",
-      "stack": ["PostgreSQL", "PHP", "HTML"],
+      "stack": [
+        "PostgreSQL",
+        "PHP",
+        "HTML"
+      ],
       "url": "",
       "github": "",
       "description": "Designed the entity-relationship model, implemented it in the database, and built a simple web application to run fixed queries and add or delete data."
@@ -452,7 +593,10 @@
       "title": "Boolean Search Engine for Text Documents",
       "year": "",
       "tagline": "Indexer and searcher",
-      "stack": ["C", "Makefile"],
+      "stack": [
+        "C",
+        "Makefile"
+      ],
       "url": "",
       "github": "",
       "description": "An indexer and searcher built on a dynamic hash table."
@@ -461,7 +605,9 @@
       "title": "WAV & PGM File Editor",
       "year": "",
       "tagline": "File data manipulation",
-      "stack": ["C"],
+      "stack": [
+        "C"
+      ],
       "url": "",
       "github": "",
       "description": "A simple editor for WAV audio and PGM image files."
@@ -470,58 +616,63 @@
       "title": "SIP Protocol Modeling",
       "year": "",
       "tagline": "Formal verification",
-      "stack": ["Promela", "iSpin"],
+      "stack": [
+        "Promela",
+        "iSpin"
+      ],
       "url": "",
       "github": "",
       "description": "Modeled the SIP protocol in Promela and verified it with iSpin."
     }
   ],
-  "skills": [
+  "languages": [
     {
-      "category": "Programming Languages",
-      "items": ["Java", "Python", "C", "PHP", "MATLAB", "Unix Shell Scripting", "Promela (SPIN)"]
+      "language": "Greek",
+      "proficiency": "Native"
     },
     {
-      "category": "Data & Databases",
-      "items": ["SQL", "PostgreSQL", "MongoDB"]
-    },
-    {
-      "category": "Tools & Frameworks",
-      "items": ["Docker", "Apache Hadoop", "Spring Boot", "WEKA", "Metabase", "NetBeans", "Makefile", "Visual Paradigm"]
-    },
-    {
-      "category": "Web & Markup",
-      "items": ["HTML", "CSS", "Markdown", "LaTeX"]
-    },
-    {
-      "category": "Design & CMS",
-      "items": ["Figma", "WordPress"]
+      "language": "English",
+      "proficiency": "C2 — Certificate of Proficiency in English, University of Michigan (Dec 2016)"
     }
   ],
-  "leadership": [
+  "certificates": [
     {
-      "title": "Chair of Coordinating Committee / Coordinator",
-      "organization": "Regional political organization",
-      "location": "",
-      "period": "2022 – Present",
-      "bulletPoints": [],
+      "title": "Certificate of Proficiency in English (C2)",
+      "organization": "University of Michigan",
+      "location": "Tripoli, Greece",
+      "period": "Dec 2016",
+      "bulletPoints": [
+        "Registration #8982569184."
+      ],
       "documents": []
     },
     {
-      "title": "School President",
-      "organization": "Senior High School of Tegea",
+      "title": "NARDA training: “Installation and usage for Narda SRM-3006, AMB-8059/03 and AMS-8061/00”",
+      "organization": "ACTA Ltd, at the University of the Peloponnese",
+      "location": "Tripoli, Greece",
+      "period": "Oct 2022",
+      "bulletPoints": [
+        "Held on 5–7 and 12 October 2022."
+      ],
+      "documents": [
+        {
+          "label": "Certificate",
+          "file": "/uploads/narda-training-certificate.pdf"
+        }
+      ]
+    },
+    {
+      "title": "Student Ambassador for the European Parliament",
+      "organization": "European Parliament",
       "location": "",
       "period": "2018 – 2019",
       "bulletPoints": [],
-      "documents": []
-    },
-    {
-      "title": "Class President",
-      "organization": "Junior and Senior High School",
-      "location": "",
-      "period": "2015 – 2019",
-      "bulletPoints": ["Class president for four consecutive school years."],
-      "documents": []
+      "documents": [
+        {
+          "label": "Certificate",
+          "file": "/uploads/european-parliament-ambassador-certificate.pdf"
+        }
+      ]
     }
   ]
 }

@@ -108,7 +108,7 @@ export const site = {
    * Sign up at https://www.goatcounter.com, then put your site code here,
    * e.g. "panagiotis" for panagiotis.goatcounter.com. Empty = no tracking.
    */
-  goatcounterCode: "",
+  goatcounterCode: "panagiotispapadopoulos",
 } as const;
 
 export const education: TimelineCard[] = [

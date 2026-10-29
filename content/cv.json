@@ -197,16 +197,16 @@
       "year": "2025",
       "doi": "10.1007/s10661-025-14876-9",
       "url": "https://doi.org/10.1007/s10661-025-14876-9",
-      "summary": "",
+      "summary": "Findings from a year-long EMF measurement campaign (July 2023 – June 2024) in the Peloponnese, combining short-term ground measurements with long-term monitoring at fixed sites. All exposure stayed well below Greek safety limits; 4G accounted for 53% of it and 5G only 3%, with peaks between 15:00 and 21:00.",
       "documents": []
     },
     {
       "title": "Extending the Performing Space Through Virtual Reality",
       "venue": "International Conference and Workshops Performing Space 2024, Nafplio, Greece",
       "year": "2024",
-      "doi": "",
-      "url": "",
-      "summary": "",
+      "doi": "10.12681/ps2023.8412",
+      "url": "https://doi.org/10.12681/ps2023.8412",
+      "summary": "The challenges and opportunities of using VR to extend the space and time of the stage, through Brave New World, a hybrid telematic play performed at once in a virtual world and in four countries (Poland, Greece, Ukraine and Georgia). Focuses on the technical and artistic solutions built for the Greek audience’s physical stage.",
       "documents": [
         {
           "label": "Presentation certificate",
@@ -229,7 +229,7 @@
       "year": "2024",
       "doi": "",
       "url": "https://avarts.ionio.gr/dcac/2024/en/presentations/1364/",
-      "summary": "",
+      "summary": "A hybrid virtual/physical stage for Brave New World (December 2023), linking actors in four theaters through a shared multiplayer VR space, live streams and projections. Covers the Greek production’s technical setup and the human-computer interaction between actors, directors and audience.",
       "documents": []
     },
     {
@@ -247,7 +247,7 @@
       "year": "2023",
       "doi": "10.3390/virtualworlds2020010",
       "url": "https://doi.org/10.3390/virtualworlds2020010",
-      "summary": "",
+      "summary": "Design and development of MobiCave, a room-scale interactive VR CAVE with motion tracking, and a user study of players and bystanders on immersion, presence, flow, usability and motivation. The experience was found highly immersive, with promising results for both fun and learning.",
       "documents": []
     },
     {
@@ -256,7 +256,7 @@
       "year": "2020",
       "doi": "10.12681/osj.24301",
       "url": "https://doi.org/10.12681/osj.24301",
-      "summary": "",
+      "summary": "How 15 students from two Tripoli high schools spent 12 weeks building Arduino and Lego Mindstorms projects (automation, sensors, IoT, an autonomous vehicle) and presented them to 500 students at the 1st Robotics Workshop in December 2017, and how robotics can support learning better than traditional methods.",
       "documents": []
     }
   ],

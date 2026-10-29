@@ -6,13 +6,42 @@ import { PrintButton } from "@/components/print-button";
 import { InlineLink, RichText } from "@/components/rich";
 import { asset } from "@/lib/asset";
 import { cv, parseLinks, type CvDocument, type CvEntry } from "@/lib/cv";
+import { SITE_URL, jsonLd } from "@/lib/seo";
 
 const { personal } = cv;
 
+const description = `Curriculum vitae of ${personal.name}, ${personal.title}: education, research experience, publications and projects.`;
+
+const shareImage = {
+  url: "/opengraph-image.png",
+  width: 1200,
+  height: 630,
+  alt: `${personal.name} — ${personal.title}`,
+};
+
 export const metadata: Metadata = {
   title: `CV — ${personal.name}`,
-  description: `Curriculum vitae of ${personal.name}, ${personal.title}.`,
+  description,
   alternates: { canonical: "/cv" },
+  // Setting openGraph here replaces the site-wide one, so the share image is named again.
+  openGraph: { type: "profile", title: `CV — ${personal.name}`, description, url: "/cv", images: [shareImage] },
+  twitter: { card: "summary_large_image", title: `CV — ${personal.name}`, description, images: [shareImage] },
+};
+
+/** The CV as a profile page about a person, for search engines. */
+const profile = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  url: `${SITE_URL}/cv`,
+  mainEntity: {
+    "@type": "Person",
+    name: personal.name,
+    jobTitle: personal.title,
+    url: personal.website,
+    address: personal.location,
+    sameAs: [personal.linkedin, personal.github, personal.scholar, personal.orcid].filter(Boolean),
+    alumniOf: cv.education.map((e) => ({ "@type": "EducationalOrganization", name: e.institution })),
+  },
 };
 
 const stripProtocol = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
@@ -145,6 +174,7 @@ export default function CvPage() {
 
   return (
     <div className="cv-page min-h-svh bg-canvas">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(profile)} />
       <header className="cv-actions sticky top-0 z-10 border-b border-line bg-canvas/85 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-[52rem] items-center justify-between gap-4 px-4 sm:px-6">
           <Link href="/" className="link-sweep shrink-0 pb-0.5 text-sm font-medium whitespace-nowrap text-muted hover:text-accent">

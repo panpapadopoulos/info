@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Manrope } from "next/font/google";
 import Script from "next/script";
 import { MotionProvider } from "@/components/motion-provider";
+import { PageViewCounter } from "@/components/page-view-counter";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -53,11 +54,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <MotionProvider>{children}</MotionProvider>
 
         {site.goatcounterCode && (
-          <Script
-            data-goatcounter={`https://${site.goatcounterCode}.goatcounter.com/count`}
-            src="https://gc.zgo.at/count.js"
-            strategy="afterInteractive"
-          />
+          <>
+            <Script
+              data-goatcounter={`https://${site.goatcounterCode}.goatcounter.com/count`}
+              src="https://gc.zgo.at/count.js"
+              strategy="afterInteractive"
+            />
+            <PageViewCounter />
+          </>
         )}
       </body>
     </html>

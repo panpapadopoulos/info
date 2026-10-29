@@ -100,12 +100,6 @@ export const site = {
 
   footer: {
     copyright: "Panagiotis Papadopoulos 2026 © All rights reserved.",
-    // The leaf mark and outline graphic come from the Studiova template.
-    credit: {
-      before: "Original design based on Studiova by ",
-      label: "ThemeWagon",
-      href: "https://www.themewagon.com",
-    },
     updated: "•Last Updated: October 2026•",
   },
 

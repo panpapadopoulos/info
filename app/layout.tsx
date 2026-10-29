@@ -38,10 +38,12 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
-/* Runs before the first paint. Arriving on the homepage from /cv, the name morphs into
-   place (see the view-transition rules in globals.css), so the hero's own intro is skipped:
-   without this the morph would land on a name still hidden below its mask. */
-const fromCvScript = String.raw`try{var b=${JSON.stringify(process.env.NEXT_PUBLIC_BASE_PATH ?? "")},r=document.referrer&&new URL(document.referrer),p=location.pathname.slice(b.length);if(r&&r.origin===location.origin&&/^\/cv(\.html)?\/?$/.test(r.pathname.slice(b.length))&&/^\/?(index\.html)?$/.test(p))document.documentElement.classList.add("from-cv")}catch(e){}`;
+/* Arriving on the homepage from /cv with the name morph (see the view-transition rules in
+   globals.css), the hero's own intro is skipped: otherwise the morph would land on a name
+   still hidden below its mask. It only applies when the browser actually runs the morph
+   ("pagereveal" with a viewTransition), so reloads, direct visits and browsers without
+   view transitions always get the full intro. */
+const fromCvScript = String.raw`addEventListener("pagereveal",function(e){try{if(!e.viewTransition)return;var b=${JSON.stringify(process.env.NEXT_PUBLIC_BASE_PATH ?? "")},r=document.referrer&&new URL(document.referrer),p=location.pathname.slice(b.length);if(r&&r.origin===location.origin&&/^\/cv(\.html)?\/?$/.test(r.pathname.slice(b.length))&&/^\/?(index\.html)?$/.test(p))document.documentElement.classList.add("from-cv")}catch(x){}});`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

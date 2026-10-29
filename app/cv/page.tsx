@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PdfLink } from "@/components/pdf-link";
 import { PrintButton } from "@/components/print-button";
 import { InlineLink, RichText } from "@/components/rich";
 import { asset } from "@/lib/asset";
@@ -54,17 +55,16 @@ function Bullets({ items }: { items?: string[] }) {
   );
 }
 
-/** Attached PDFs, as small links. Left off the printed résumé. */
-function Documents({ items }: { items?: CvDocument[] }) {
+/** Attached PDFs, as small links that open a viewer. Left off the printed résumé. */
+function Documents({ items, context }: { items?: CvDocument[]; context: string }) {
   if (!items?.length) return null;
   return (
     <ul className="cv-docs mt-3 flex flex-wrap gap-2">
       {items.map((d) => (
         <li key={d.file}>
-          <a
+          <PdfLink
             href={asset(d.file)}
-            target="_blank"
-            rel="noopener noreferrer"
+            title={`${d.label} — ${context}`}
             className="inline-flex items-center gap-1.5 rounded-full border border-line-strong px-3 py-1 text-sm text-muted transition-[color,border-color] duration-150 hover:border-accent hover:text-accent active:opacity-70"
           >
             <svg aria-hidden viewBox="0 0 24 24" className="size-3.5" fill="none" stroke="currentColor" strokeWidth={2}>
@@ -72,8 +72,8 @@ function Documents({ items }: { items?: CvDocument[] }) {
               <path d="M14 3v5h5" />
             </svg>
             {d.label}
-            <span className="sr-only"> (PDF, opens in a new tab)</span>
-          </a>
+            <span className="sr-only"> (PDF)</span>
+          </PdfLink>
         </li>
       ))}
     </ul>
@@ -91,7 +91,7 @@ function EntrySection({ title, entries }: { title: string; entries?: CvEntry[] }
         <article key={e.title + e.organization + e.period} className="cv-entry">
           <EntryHead title={e.title} when={e.period} sub={join(e.organization, e.location)} />
           <Bullets items={e.bulletPoints} />
-          <Documents items={e.documents} />
+          <Documents items={e.documents} context={e.title} />
         </article>
       ))}
     </CvSection>
@@ -153,7 +153,7 @@ export default function CvPage() {
                 {e.honors && <li>{e.honors}</li>}
                 {e.thesis && <li>Thesis: “{e.thesis}”</li>}
               </ul>
-              <Documents items={e.documents} />
+              <Documents items={e.documents} context={e.degree} />
             </article>
           ))}
         </CvSection>
@@ -163,7 +163,7 @@ export default function CvPage() {
             <article key={x.role + x.organization + x.period} className="cv-entry">
               <EntryHead title={x.role} when={x.period} sub={join(x.organization, x.location)} />
               <Bullets items={x.bulletPoints} />
-              <Documents items={x.documents} />
+              <Documents items={x.documents} context={x.organization} />
             </article>
           ))}
         </CvSection>
@@ -182,7 +182,7 @@ export default function CvPage() {
                 />
                 {p.doi && <p className="cv-muted mt-1 text-sm text-faint">DOI: {p.doi}</p>}
                 {p.summary && <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink/85">{p.summary}</p>}
-                <Documents items={p.documents} />
+                <Documents items={p.documents} context={p.title} />
               </article>
             );
           })}

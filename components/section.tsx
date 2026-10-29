@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { draw, group, inView, pop, rise, slideIn } from "./reveal";
 import { SweepLink } from "./rich";
+import { asset } from "@/lib/asset";
 import { site } from "@/lib/site";
 
 /** The original section frame: numbered badge row on the left, content on the right. */
@@ -84,7 +85,7 @@ export function MoreAtCv() {
   return (
     <motion.p {...inView} variants={rise} className="mt-6 text-muted">
       more at my{" "}
-      <SweepLink href={site.moreCvUrl} className="font-medium text-ink">
+      <SweepLink href={asset(site.moreCvUrl)} className="font-medium text-ink">
         full CV
       </SweepLink>{" "}
       <small>...</small>

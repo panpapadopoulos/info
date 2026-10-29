@@ -149,16 +149,13 @@ export function Hero({ portraitAvailable }: { portraitAvailable: boolean }) {
 
             <motion.div variants={rise} className="lg:pb-5">
               <a
-                href={site.cvUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href={asset(site.cvUrl)}
                 className="group inline-flex h-[60px] items-center gap-5 rounded-full bg-accent pr-1.5 pl-7 text-lg font-semibold text-accent-ink transition-[transform,background-color] duration-200 ease-out hover:bg-white active:scale-[0.97]"
               >
                 CV
                 <span className="grid size-12 place-items-center rounded-full bg-white text-charcoal transition-[background-color,color] duration-200 ease-out group-hover:bg-charcoal group-hover:text-accent">
                   <ArrowUpRight className="size-5 transition-transform duration-300 ease-out-strong group-hover:rotate-45" />
                 </span>
-                <span className="sr-only">(opens in a new tab)</span>
               </a>
             </motion.div>
           </div>

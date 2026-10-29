@@ -185,9 +185,7 @@ export function Header() {
                     Résumé
                   </a>
                   <a
-                    href={site.cvUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={asset(site.cvUrl)}
                     className="grid h-11 place-items-center rounded-lg bg-charcoal font-semibold text-white ring-1 ring-white/10 transition-[transform,background-color] duration-150 ease-out hover:bg-black active:scale-[0.97]"
                   >
                     CV

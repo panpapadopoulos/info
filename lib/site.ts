@@ -15,15 +15,15 @@ export type TimelineCard = {
   body?: Rich[];
 };
 
-const CV_URL =
-  "https://equinox-libra-0be.notion.site/Panagiotis-Papadopoulos-CV-fe4eb372f5764ea8a869a35baaf9d73a";
+// The full CV page, built from content/cv.json.
+const CV_URL = "/cv";
 
 export const site = {
   name: "Panagiotis Papadopoulos",
   nameLines: ["Panagiotis", "Papadopoulos"],
   portrait: "/me.jpg",
   cvUrl: CV_URL,
-  moreCvUrl: `${CV_URL}?pvs=74`,
+  moreCvUrl: CV_URL,
   resume: "/Panagiotis-Papadopoulos-Resume.pdf",
 
   hero: {

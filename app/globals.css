@@ -151,3 +151,83 @@
   opacity: 0.035;
   mix-blend-mode: overlay;
 }
+
+/* ---------- CV print ---------- */
+/* Ctrl/Cmd+P on /cv: a black-and-white, one-column-label résumé on white paper. */
+@media print {
+  @page {
+    size: auto;
+    margin: 14mm 14mm 16mm;
+  }
+
+  /* The site is dark-only; without this the page margins print near-black. */
+  html {
+    color-scheme: light;
+    /* Sizes are in rem, so this scales the whole CV down to paper size. */
+    font-size: 11px;
+  }
+
+  html,
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .atmosphere-noise,
+  .cv-actions {
+    display: none;
+  }
+
+  .cv-page {
+    background: #fff;
+    color: #000;
+    min-height: 0;
+  }
+
+  .cv-page main {
+    max-width: none;
+    padding: 0;
+  }
+
+  .cv-page :where(p, li, dd, dt, span, a, h1, h2, h3, div) {
+    color: #000;
+  }
+
+  .cv-page a {
+    text-decoration: none;
+  }
+
+  .cv-page .cv-muted,
+  .cv-page .cv-muted * {
+    color: #444;
+  }
+
+  .cv-page .cv-title,
+  .cv-page .cv-label {
+    color: #000;
+  }
+
+  .cv-page .cv-section {
+    border-top-color: #bbb;
+    padding-block: 10pt;
+    grid-template-columns: 8.5rem 1fr;
+    gap: 1rem;
+  }
+
+  .cv-page .cv-entry {
+    break-inside: avoid;
+  }
+
+  .cv-page .cv-section > h2 {
+    break-after: avoid;
+  }
+
+  .cv-page .cv-bullets li::before {
+    background: #000;
+  }
+
+  .cv-page .cv-chip {
+    border-color: #999;
+    color: #000;
+  }
+}

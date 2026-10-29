@@ -22,6 +22,17 @@ npm run dev     # http://localhost:3000
 npm run build   # static site in out/
 ```
 
+## CV and content manager
+The CV page at `/cv` is built from [`content/cv.json`](content/cv.json) and prints as a black-and-white résumé (**Print / Save PDF**).
+
+Edit it visually at `/admin` ([Decap CMS](https://decapcms.org), configured in [`public/admin/`](public/admin/)). There is no auth server: you sign in with a GitHub token.
+
+1. Create a [fine-grained personal access token](https://github.com/settings/personal-access-tokens/new) with **Repository access → Only select repositories → info**, **Permissions → Contents: Read and write**, and an expiry date.
+2. Open `/admin`, paste the token and sign in. It is stored in that browser only; **Log out** in the CMS removes it.
+3. Each save commits `content/cv.json` to `main`, and the site redeploys in a minute or two.
+
+Links inside experience bullets use `[label](https://…)`.
+
 Pushing to `main` builds and deploys the site to GitHub Pages ([`.github/workflows/static.yml`](.github/workflows/static.yml)). In the repository settings, **Pages → Source** must be set to **GitHub Actions**.
 
 ## Legacy site

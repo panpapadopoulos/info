@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <title>Content Manager</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --canvas: #0a0b0c;
+        --surface: #171a1c;
+        --ink: #f5f7f4;
+        --muted: #b7bcb9;
+        --line: rgb(255 255 255 / 0.14);
+        --accent: #c1ff72;
+        --accent-ink: #1f2a2e;
+        --danger: #ff8a7a;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--canvas);
+        color: var(--ink);
+        font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      }
+      #pat-login {
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: 24px 16px;
+      }
+      #pat-login[hidden] {
+        display: none;
+      }
+      .card {
+        width: 100%;
+        max-width: 26rem;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 28px;
+      }
+      h1 {
+        margin: 0 0 4px;
+        font-size: 1.375rem;
+        letter-spacing: -0.01em;
+      }
+      p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.9375rem;
+      }
+      label {
+        display: block;
+        margin: 22px 0 6px;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      input {
+        width: 100%;
+        height: 44px;
+        padding: 0 12px;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+        background: var(--canvas);
+        color: var(--ink);
+        font: inherit;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.875rem;
+      }
+      input:focus-visible,
+      button:focus-visible,
+      a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+      }
+      button {
+        margin-top: 16px;
+        width: 100%;
+        height: 44px;
+        border: 0;
+        border-radius: 999px;
+        background: var(--accent);
+        color: var(--accent-ink);
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.6;
+        cursor: progress;
+      }
+      .error {
+        margin-top: 12px;
+        color: var(--danger);
+        min-height: 1.5em;
+      }
+      .help {
+        margin-top: 18px;
+        font-size: 0.8125rem;
+      }
+      a {
+        color: var(--ink);
+        text-underline-offset: 3px;
+      }
+      a:hover {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+      Decap CMS with no auth server: you sign in with a GitHub fine-grained personal
+      access token. Decap restores its GitHub session from localStorage["decap-cms-user"],
+      so this page checks the token against the repository, stores it there, and only
+      then loads Decap. Logging out of Decap clears it and brings this form back.
+    -->
+    <main id="pat-login" hidden>
+      <form class="card" id="pat-form" autocomplete="off">
+        <h1>Content Manager</h1>
+        <p>Sign in with a GitHub personal access token to edit the site.</p>
+
+        <label for="pat">Personal access token</label>
+        <input id="pat" name="pat" type="password" required spellcheck="false" placeholder="github_pat_…" />
+
+        <button type="submit" id="pat-submit">Sign in</button>
+        <p class="error" id="pat-error" role="alert"></p>
+
+        <p class="help">
+          <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer"
+            >Create a fine-grained token</a
+          >
+          with access to only the <code>info</code> repository, permission
+          <strong>Contents: Read and write</strong>, and an expiry date. The token stays in this browser only.
+        </p>
+      </form>
+    </main>
+
+    <noscript>The content manager needs JavaScript.</noscript>
+
+    <script>
+      (function () {
+        // Keep in sync with backend.repo in config.yml.
+        var REPO = "panpapadopoulos/info";
+        var STORAGE_KEY = "decap-cms-user";
+        var DECAP_SRC = "https://unpkg.com/decap-cms@3.17.3/dist/decap-cms.js";
+        var DECAP_INTEGRITY = "sha384-RWRzuHfiZSWCt3nEvG7B0v3cMgM1C2UuJmgBSL92GQh4uXmNSkbcthql/mNBqvjr";
+
+        var loginEl = document.getElementById("pat-login");
+        var form = document.getElementById("pat-form");
+        var input = document.getElementById("pat");
+        var submit = document.getElementById("pat-submit");
+        var errorEl = document.getElementById("pat-error");
+
+        function readStored() {
+          try {
+            var user = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+            return user && user.backendName === "github" && user.token ? user : null;
+          } catch (e) {
+            return null;
+          }
+        }
+
+        // Resolves to null when the token can write to the repo, or to an error message.
+        function checkToken(token) {
+          return fetch("https://api.github.com/repos/" + REPO, {
+            headers: { Accept: "application/vnd.github+json", Authorization: "Bearer " + token },
+          }).then(
+            function (res) {
+              if (res.status === 401) return "GitHub rejected this token. It may be mistyped, revoked or expired.";
+              if (res.status === 403 || res.status === 404)
+                return "This token can't see " + REPO + ". Give it access to that repository.";
+              if (!res.ok) return "GitHub answered with an error (" + res.status + "). Try again in a moment.";
+              return res.json().then(function (repo) {
+                return repo.permissions && repo.permissions.push
+                  ? null
+                  : "This token can read " + REPO + " but not write to it. Grant Contents: Read and write.";
+              });
+            },
+            function () {
+              return "Couldn't reach GitHub. Check your connection and try again.";
+            },
+          );
+        }
+
+        function showLogin(message) {
+          loginEl.hidden = false;
+          errorEl.textContent = message || "";
+          input.focus();
+        }
+
+        function loadCms() {
+          loginEl.remove();
+          var script = document.createElement("script");
+          script.src = DECAP_SRC;
+          script.integrity = DECAP_INTEGRITY;
+          script.crossOrigin = "anonymous";
+          script.onerror = function () {
+            document.body.textContent = "The content manager failed to load. Reload the page to try again.";
+          };
+          document.body.appendChild(script);
+
+          // Decap's logout clears the stored session; reload to show the token form again.
+          setInterval(function () {
+            if (!readStored()) location.reload();
+          }, 1000);
+        }
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var token = input.value.trim();
+          if (!token) return;
+          submit.disabled = true;
+          errorEl.textContent = "";
+          checkToken(token).then(function (problem) {
+            submit.disabled = false;
+            if (problem) return showLogin(problem);
+            try {
+              localStorage.setItem(STORAGE_KEY, JSON.stringify({ token: token, backendName: "github" }));
+            } catch (e) {
+              return showLogin("This browser blocks site storage, which the content manager needs.");
+            }
+            input.value = "";
+            loadCms();
+          });
+        });
+
+        var stored = readStored();
+        if (!stored) return showLogin();
+
+        // A saved token may have expired or been revoked since the last visit.
+        checkToken(stored.token).then(function (problem) {
+          if (!problem) return loadCms();
+          try {
+            localStorage.removeItem(STORAGE_KEY);
+          } catch (e) {}
+          showLogin(problem);
+        });
+      })();
+    </script>
+  </body>
+</html>

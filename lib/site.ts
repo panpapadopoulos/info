@@ -231,7 +231,7 @@ export const projects: TimelineCard[] = [
         "Built a data-driven recommender using PostgreSQL, Docker, and Spring Boot to generate personalized movie suggestions. Check out the ",
         {
           label: "GitHub repository",
-          href: "https://github.com/panagiotispapadopoulos/Postgres-and-Chill",
+          href: "https://github.com/panpapadopoulos/PostgresAndChill",
         },
         " for more details.",
       ],

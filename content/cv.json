@@ -1,0 +1,167 @@
+{
+  "personal": {
+    "name": "Panagiotis Papadopoulos",
+    "title": "M.S. Computer Science Candidate",
+    "email": "giotispapadopoulos@outlook.com",
+    "location": "Munster, IN, USA",
+    "website": "https://panagiotispapadopoulos.com",
+    "linkedin": "https://www.linkedin.com/in/panagiotis-papadopoulos-0b1a291ab/",
+    "github": "https://github.com/panpapadopoulos",
+    "scholar": "https://scholar.google.com/citations?user=QK3LqOYAAAAJ&hl=en",
+    "summary": "Computer Science graduate student at Purdue University Northwest (GPA 4.0) with a strong background in research-driven software development, data systems, and immersive technologies. Valedictorian graduate with hands-on experience in Java, Python, SQL, Docker, and distributed systems through funded European research projects. Published researcher in VR/HCI and electromagnetic measurement studies, with proven ability to collaborate in multidisciplinary teams and translate research into working systems."
+  },
+  "education": [
+    {
+      "degree": "M.S. Computer Science",
+      "institution": "Purdue University Northwest",
+      "location": "Hammond, IN, USA",
+      "year": "Aug 2025 – May 2027 (expected)",
+      "grade": "GPA 4.00/4.00",
+      "honors": "",
+      "thesis": ""
+    },
+    {
+      "degree": "B.S. Informatics & Telecommunications",
+      "institution": "University of the Peloponnese, Department of Informatics & Telecommunications",
+      "location": "Tripoli, Greece",
+      "year": "Oct 2019 – Jul 2024",
+      "grade": "8.72/10.00 (“Excellent”)",
+      "honors": "Valedictorian, Class of 2024. Merit-based scholarship from the Sarantopoulos Welfare Institution for the full degree, awarded for high performance in high school.",
+      "thesis": "Virtual Reality in Theater: Exploring Actor-Machine Interactions"
+    }
+  ],
+  "experience": [
+    {
+      "role": "Permanent Substitute Teacher (K–12)",
+      "organization": "School Town of Munster",
+      "location": "Munster, IN, USA",
+      "period": "Feb 2025 – Present",
+      "bulletPoints": [
+        "Manage K–12 classrooms and communicate with students, faculty, and administrators in fast-paced environments."
+      ]
+    },
+    {
+      "role": "Research Assistant",
+      "organization": "HCI-VR Lab, University of the Peloponnese",
+      "location": "Tripoli, Greece",
+      "period": "Jul 2021 – Sep 2024",
+      "bulletPoints": [
+        "Designed and implemented components of an interactive VR Tunnel for an EU-funded research project.",
+        "Collaborated with multidisciplinary teams on VR interaction design, system integration, and experimental evaluation.",
+        "Undergraduate scholar in “CrossCult: Empowering reuse of digital cultural heritage in context-aware crosscuts of European history” (Code 0279), part of the National Participation in European Research Projects by the University of the Peloponnese.",
+        "Project details: [hci-vr.dit.uop.gr](https://hci-vr.dit.uop.gr/), contract at [diavgeia.gov.gr](https://diavgeia.gov.gr/decision/view/Ψ2ΦΘ469Β7Δ-Σ97)."
+      ]
+    },
+    {
+      "role": "Research Assistant",
+      "organization": "PANDORA – 5G Electromagnetic Field Observatory, University of the Peloponnese",
+      "location": "Tripoli, Greece",
+      "period": "May 2022 – Sep 2024",
+      "bulletPoints": [
+        "Conducted RF-EMF measurement campaigns across multiple locations using specialized measurement equipment.",
+        "Collected and analyzed experimental data supporting published research on 5G exposure assessment.",
+        "Project details: [wmclab.uop.gr/pandora](http://wmclab.uop.gr/pandora/team.html)."
+      ]
+    },
+    {
+      "role": "Research Assistant",
+      "organization": "ENIRISSTplus Research Infrastructure, University of the Peloponnese",
+      "location": "Greece",
+      "period": "May 2023 – Aug 2023",
+      "bulletPoints": [
+        "Evaluated research services and contributed to methodology validation.",
+        "Supported quality assurance, documentation, and research infrastructure assessment."
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "title": "RF-EMF exposure in the transition to 5G: A multi-dimensional measurement campaign in the Peloponnese Region of Greece",
+      "venue": "Environmental Monitoring and Assessment",
+      "year": "2025",
+      "doi": "10.1007/s10661-025-14876-9",
+      "url": "https://doi.org/10.1007/s10661-025-14876-9",
+      "summary": ""
+    },
+    {
+      "title": "Beyond the Stage: Advancements in Human-Computer Interactions in a VR Theater",
+      "venue": "Digital Culture & AudioVisual Challenges (DCAC 2024), Corfu, Greece",
+      "year": "2024",
+      "doi": "",
+      "url": "https://avarts.ionio.gr/dcac/2024/en/presentations/1364/",
+      "summary": ""
+    },
+    {
+      "title": "Developing an Interactive VR CAVE for Immersive Shared Gaming Experiences",
+      "venue": "Virtual Worlds, 2(2), 162–181",
+      "year": "2023",
+      "doi": "10.3390/virtualworlds2020010",
+      "url": "https://doi.org/10.3390/virtualworlds2020010",
+      "summary": ""
+    }
+  ],
+  "projects": [
+    {
+      "title": "Postgres & Chill",
+      "year": "",
+      "tagline": "Movie recommendation system",
+      "stack": ["PostgreSQL", "Docker", "Spring Boot"],
+      "url": "",
+      "github": "https://github.com/panpapadopoulos/PostgresAndChill",
+      "description": "Developed a data-driven movie recommendation system that uses user ratings to generate personalized recommendations."
+    },
+    {
+      "title": "Trending Videos Data Analysis",
+      "year": "",
+      "tagline": "Large-scale aggregation on YouTube trending data",
+      "stack": ["Python", "MongoDB", "Metabase"],
+      "url": "",
+      "github": "",
+      "description": "Built MongoDB aggregation pipelines to analyze YouTube trending-video data and visualized the results with Metabase."
+    },
+    {
+      "title": "Transaction Analysis",
+      "year": "",
+      "tagline": "E-commerce data with MapReduce",
+      "stack": ["Hadoop", "Java", "Python", "HDFS"],
+      "url": "",
+      "github": "",
+      "description": "Analyzed e-commerce transaction data using Hadoop MapReduce and HDFS and visualized the resulting data patterns."
+    },
+    {
+      "title": "Frequent Collaboration Patterns Mining",
+      "year": "",
+      "tagline": "Data mining on academic publications",
+      "stack": ["WEKA", "Python"],
+      "url": "",
+      "github": "",
+      "description": "Analyzed academic publications to extract collaboration patterns."
+    }
+  ],
+  "skills": [
+    {
+      "category": "Programming Languages",
+      "items": ["Java", "Python", "C", "PHP", "MATLAB", "Unix Shell Scripting", "Promela (SPIN)"]
+    },
+    {
+      "category": "Data & Databases",
+      "items": ["SQL", "PostgreSQL", "MongoDB"]
+    },
+    {
+      "category": "Tools & Frameworks",
+      "items": ["Docker", "Apache Hadoop", "Spring Boot", "WEKA", "Metabase", "NetBeans", "Makefile", "Visual Paradigm"]
+    },
+    {
+      "category": "Web & Markup",
+      "items": ["HTML", "CSS", "Markdown", "LaTeX"]
+    },
+    {
+      "category": "Design & CMS",
+      "items": ["Figma", "WordPress"]
+    }
+  ],
+  "languages": [
+    { "language": "Greek", "proficiency": "Native" },
+    { "language": "English", "proficiency": "C2 Proficiency" }
+  ]
+}

@@ -1,0 +1,119 @@
+# Decap CMS configuration: https://decapcms.org/docs/configuration-options/
+# Sign-in uses a GitHub personal access token (see index.html), so no auth server is needed.
+# Each save commits to main, which rebuilds and redeploys the site.
+backend:
+  name: github
+  repo: panpapadopoulos/info # keep in sync with REPO in index.html
+  branch: main
+  commit_messages:
+    update: "Update {{collection}} “{{slug}}” via CMS"
+    uploadMedia: "Upload “{{path}}” via CMS"
+    deleteMedia: "Delete “{{path}}” via CMS"
+
+site_url: https://panagiotispapadopoulos.com
+display_url: https://panagiotispapadopoulos.com
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "cv"
+    label: "Curriculum Vitae"
+    editor:
+      preview: false
+    files:
+      - file: "content/cv.json"
+        label: "CV Content"
+        name: "cv_data"
+        fields:
+          - label: "Personal Info"
+            name: "personal"
+            widget: "object"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Website", name: "website", widget: "string", required: false }
+              - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
+              - { label: "GitHub", name: "github", widget: "string", required: false }
+              - { label: "Google Scholar", name: "scholar", widget: "string", required: false }
+              - { label: "Summary", name: "summary", widget: "text" }
+
+          - label: "Education"
+            name: "education"
+            widget: "list"
+            summary: "{{fields.degree}} — {{fields.institution}}"
+            fields:
+              - { label: "Degree", name: "degree", widget: "string" }
+              - { label: "Institution", name: "institution", widget: "string" }
+              - { label: "Location", name: "location", widget: "string", required: false }
+              - { label: "Period", name: "year", widget: "string", hint: "e.g. Oct 2019 – Jul 2024" }
+              - { label: "Grade", name: "grade", widget: "string", required: false }
+              - { label: "Honors", name: "honors", widget: "text", required: false }
+              - { label: "Thesis", name: "thesis", widget: "string", required: false }
+
+          - label: "Experience"
+            name: "experience"
+            widget: "list"
+            summary: "{{fields.role}} — {{fields.organization}}"
+            fields:
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Organization", name: "organization", widget: "string" }
+              - { label: "Location", name: "location", widget: "string", required: false }
+              - { label: "Period", name: "period", widget: "string" }
+              - label: "Bullets"
+                name: "bulletPoints"
+                widget: "list"
+                required: false
+                hint: "Links: [label](https://example.com)"
+                field: { label: "Bullet", name: "bullet", widget: "text" }
+
+          - label: "Publications"
+            name: "publications"
+            widget: "list"
+            summary: "{{fields.year}} — {{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Venue", name: "venue", widget: "string" }
+              - { label: "Year", name: "year", widget: "string" }
+              - { label: "DOI", name: "doi", widget: "string", required: false, hint: "Without https://doi.org/" }
+              - { label: "URL", name: "url", widget: "string", required: false }
+              - { label: "Summary", name: "summary", widget: "text", required: false }
+
+          - label: "Projects"
+            name: "projects"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Year", name: "year", widget: "string", required: false }
+              - { label: "Tagline", name: "tagline", widget: "string", required: false }
+              - label: "Stack"
+                name: "stack"
+                widget: "list"
+                required: false
+                field: { label: "Technology", name: "tech", widget: "string" }
+              - { label: "Link", name: "url", widget: "string", required: false }
+              - { label: "GitHub", name: "github", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+
+          - label: "Skills"
+            name: "skills"
+            widget: "list"
+            summary: "{{fields.category}}"
+            fields:
+              - { label: "Category", name: "category", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                field: { label: "Skill", name: "skill", widget: "string" }
+
+          - label: "Languages"
+            name: "languages"
+            widget: "list"
+            required: false
+            summary: "{{fields.language}} — {{fields.proficiency}}"
+            fields:
+              - { label: "Language", name: "language", widget: "string" }
+              - { label: "Proficiency", name: "proficiency", widget: "string" }

@@ -29,6 +29,8 @@ export type CV = {
     github?: string;
     scholar?: string;
     orcid?: string;
+    /** The one-page résumé PDF. */
+    resume?: string;
     summary: string;
   };
   education: {

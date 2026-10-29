@@ -69,6 +69,7 @@ collections:
               - { label: "GitHub", name: "github", widget: "string", required: false }
               - { label: "Google Scholar", name: "scholar", widget: "string", required: false }
               - { label: "ORCID", name: "orcid", widget: "string", required: false }
+              - { label: "Résumé (PDF)", name: "resume", widget: "file", required: false, hint: "Shown as the Résumé button at the top of /cv" }
               - { label: "Summary", name: "summary", widget: "text" }
 
           - label: "Education"
@@ -184,7 +185,7 @@ collections:
                 widget: "list"
                 field: { label: "Skill", name: "skill", widget: "string" }
 
-          - label: "Leadership"
+          - label: "Leadership & Activities"
             name: "leadership"
             widget: "list"
             required: false

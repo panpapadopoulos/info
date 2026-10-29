@@ -25,6 +25,7 @@ const sections = (
   [
     ["Education", true],
     ["Experience", true],
+    ["Leadership & Activities", cv.leadership?.length],
     ["Certificates", cv.certificates?.length],
     ["Publications", true],
     ["Conferences", cv.conferences?.length],
@@ -34,7 +35,6 @@ const sections = (
     ["Languages", cv.languages?.length],
     ["Projects", true],
     ["Skills", true],
-    ["Leadership", cv.leadership?.length],
   ] as const
 )
   .filter(([, present]) => present)
@@ -147,10 +147,26 @@ export default function CvPage() {
     <div className="cv-page min-h-svh bg-canvas">
       <header className="cv-actions sticky top-0 z-10 border-b border-line bg-canvas/85 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-[52rem] items-center justify-between gap-4 px-4 sm:px-6">
-          <Link href="/" className="link-sweep pb-0.5 text-sm font-medium text-muted hover:text-accent">
-            ← Back to Home
+          <Link href="/" className="link-sweep shrink-0 pb-0.5 text-sm font-medium whitespace-nowrap text-muted hover:text-accent">
+            ← <span className="sm:hidden">Home</span>
+            <span className="max-sm:hidden">Back to Home</span>
           </Link>
-          <PrintButton />
+          <div className="flex shrink-0 items-center gap-2">
+            {personal.resume && (
+              <PdfLink
+                href={asset(personal.resume)}
+                title={`Résumé — ${personal.name}`}
+                className="inline-flex h-10 items-center gap-2 rounded-full px-4 text-sm font-semibold whitespace-nowrap text-ink ring-1 ring-line-strong transition-[transform,color,box-shadow] duration-200 ease-out hover:text-accent hover:ring-accent active:scale-[0.97]"
+              >
+                <svg aria-hidden viewBox="0 0 24 24" className="size-4" fill="none" stroke="currentColor" strokeWidth={2}>
+                  <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+                  <path d="M14 3v5h5" />
+                </svg>
+                Résumé
+              </PdfLink>
+            )}
+            <PrintButton />
+          </div>
         </div>
         <nav aria-label="CV sections" className="mx-auto max-w-[52rem] border-t border-line px-2 sm:px-4">
           <CvNav sections={sections} />
@@ -198,6 +214,7 @@ export default function CvPage() {
           ))}
         </CvSection>
 
+        <EntrySection title="Leadership & Activities" entries={cv.leadership} />
         <EntrySection title="Certificates" entries={cv.certificates} />
 
         <CvSection title="Publications">
@@ -279,7 +296,6 @@ export default function CvPage() {
           </dl>
         </CvSection>
 
-        <EntrySection title="Leadership" entries={cv.leadership} />
       </main>
     </div>
   );

@@ -11,7 +11,8 @@
     "website": "https://panagiotispapadopoulos.com",
     "orcid": "https://orcid.org/0009-0006-3062-3999",
     "email": "giotispapadopoulos@outlook.com",
-    "linkedin": "https://www.linkedin.com/in/panagiotis-papadopoulos-0b1a291ab/"
+    "linkedin": "https://www.linkedin.com/in/panagiotis-papadopoulos-0b1a291ab/",
+    "resume": "/Panagiotis-Papadopoulos-Resume.pdf"
   },
   "skills": [
     {
@@ -83,6 +84,26 @@
     }
   ],
   "leadership": [
+    {
+      "title": "Co-sponsor",
+      "organization": "Balkan Cultural Club, Munster High School",
+      "location": "Munster, IN, USA",
+      "period": "Aug 2026 – Present",
+      "bulletPoints": [
+        "Advise and support student leadership in organizing cultural awareness events, club meetings, and community initiatives celebrating Balkan heritage."
+      ],
+      "documents": []
+    },
+    {
+      "title": "Event Planning Officer",
+      "organization": "Applied Artificial Intelligence Club, Purdue University Northwest",
+      "location": "Hammond, IN, USA",
+      "period": "May 2026 – Present",
+      "bulletPoints": [
+        "Coordinate logistics, speaker invitations, and technical workshops focused on applied AI workflows, machine learning tools, and student project showcases."
+      ],
+      "documents": []
+    },
     {
       "title": "Chair of Coordinating Committee / Coordinator",
       "organization": "Regional political organization",

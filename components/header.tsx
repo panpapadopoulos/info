@@ -7,6 +7,7 @@ import { sections, site } from "@/lib/site";
 import { CloseIcon, LeafIcon, MenuIcon } from "./icons";
 import { easeOut } from "./reveal";
 import { SweepLink } from "./rich";
+import { ScrollProgress } from "./scroll-progress";
 
 type SectionId = (typeof sections)[number]["id"];
 
@@ -75,6 +76,11 @@ export function Header() {
         scrolled ? "bg-accent shadow-[0_10px_30px_-14px_rgb(0_0_0/0.7)]" : "bg-transparent"
       }`}
     >
+      {/* Charcoal on the lime bar; hidden over the hero, where the bar is transparent */}
+      <ScrollProgress
+        className={`h-[3px] bg-charcoal transition-opacity duration-200 ${scrolled ? "opacity-100" : "opacity-0"}`}
+      />
+
       <div className="container-page flex h-16 items-center sm:h-[5.25rem] justify-between gap-4">
         <a
           href="#top"

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { CvNav } from "@/components/cv-nav";
-import { CvProgress } from "@/components/cv-progress";
+import { ScrollProgress } from "@/components/scroll-progress";
 import { PdfLink } from "@/components/pdf-link";
 import { PrintButton } from "@/components/print-button";
 import { InlineLink, RichText } from "@/components/rich";
@@ -202,7 +202,7 @@ export default function CvPage() {
         <nav aria-label="CV sections" className="mx-auto max-w-[52rem] border-t border-line px-2 sm:px-4">
           <CvNav sections={sections} />
         </nav>
-        <CvProgress />
+        <ScrollProgress />
       </header>
 
       <main id="main" className="mx-auto max-w-[52rem] px-4 pt-12 pb-20 sm:px-6 sm:pt-16">

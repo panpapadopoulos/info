@@ -1,8 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { draw, group, inView, pop, rise, slideIn } from "./reveal";
 import { SweepLink } from "./rich";
+import { ScrambleText } from "./scramble-text";
 import { asset } from "@/lib/asset";
 import { site } from "@/lib/site";
 
@@ -26,6 +28,9 @@ export function Section({
   children: React.ReactNode;
 }) {
   const titleId = `${id}-title`;
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  // Same trigger as the title's rise, so it decodes while it moves into place.
+  const titleShown = useInView(titleRef, { once: true, margin: "0px 0px -10% 0px" });
 
   // The section uses overflow `clip`, not `hidden`: hidden would make it a scroll
   // container and break the sticky badge row.
@@ -65,12 +70,13 @@ export function Section({
         <div className="min-w-0 xl:col-span-8 2xl:col-span-7">
           <div className="max-w-[35rem]">
             <motion.h2
+              ref={titleRef}
               {...inView}
               variants={rise}
               id={titleId}
               className="text-[clamp(2.25rem,4.4vw,3.5rem)] leading-[1.1] font-bold tracking-[-0.02em]"
             >
-              {title}
+              <ScrambleText text={title} play={titleShown} />
             </motion.h2>
             <div className="mt-6 sm:mt-8">{children}</div>
           </div>

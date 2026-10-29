@@ -137,11 +137,11 @@ export function Hero({ portraitAvailable }: { portraitAvailable: boolean }) {
             <motion.h1
               variants={lines}
               id="hero-title"
-              className="text-[clamp(2.75rem,12vw,8.5rem)] leading-[0.98] font-semibold tracking-[-0.035em] lg:text-[clamp(4rem,9vw,8.5rem)]"
+              className="[view-transition-name:site-name] text-[clamp(2.75rem,12vw,8.5rem)] leading-[0.98] font-semibold tracking-[-0.035em] lg:text-[clamp(4rem,9vw,8.5rem)]"
             >
               {site.nameLines.map((line, i) => (
                 <span key={line} className="block overflow-hidden pb-[0.08em]">
-                  <motion.span variants={reveal} className="block">
+                  <motion.span variants={reveal} className="hero-name-line block">
                     {/* Decodes from code characters while it slides up */}
                     <ScrambleText text={line} delay={300 + i * 140} />
                   </motion.span>

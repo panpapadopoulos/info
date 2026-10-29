@@ -122,6 +122,31 @@
   }
 }
 
+/* ---------- Page transitions ---------- */
+/* Between the homepage and /cv the name glides from one page into the other
+   (both carry view-transition-name: site-name); everything else crossfades.
+   Browsers without cross-document view transitions just load the page. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
+::view-transition-group(site-name) {
+  animation-duration: 0.55s;
+  animation-timing-function: var(--ease-in-out-strong);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.3s;
+}
+
+/* Arrived from /cv (set by a script in the layout): the name is already in place. */
+.from-cv .hero-name-line {
+  transform: none !important;
+}
+
 /* ---------- Hero photo ---------- */
 /* Phone: full-bleed, fading into the page under the name.
    Desktop: the right two-thirds, fading out to the left and the bottom. */

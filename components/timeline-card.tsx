@@ -36,14 +36,16 @@ function When({ range }: { range: string }) {
 /** The original card: lime side panel with the date, body on the right. */
 function Card({ card, index }: { card: TimelineCard; index: number }) {
   const glowRef = useRef<HTMLSpanElement>(null);
+  const spotRef = useRef<HTMLSpanElement>(null);
 
-  // Write the pointer position onto the glow layer only, so nothing else restyles.
+  // Write the pointer position onto the two glow layers only, so nothing else restyles.
   const trackGlow = (e: React.PointerEvent<HTMLElement>) => {
-    const glow = glowRef.current;
-    if (!glow || e.pointerType !== "mouse") return;
+    if (e.pointerType !== "mouse") return;
     const rect = e.currentTarget.getBoundingClientRect();
-    glow.style.setProperty("--x", `${e.clientX - rect.left}px`);
-    glow.style.setProperty("--y", `${e.clientY - rect.top}px`);
+    for (const layer of [glowRef.current, spotRef.current]) {
+      layer?.style.setProperty("--x", `${e.clientX - rect.left}px`);
+      layer?.style.setProperty("--y", `${e.clientY - rect.top}px`);
+    }
   };
 
   const hasHeader = Boolean(card.title || card.meta);
@@ -71,12 +73,22 @@ function Card({ card, index }: { card: TimelineCard; index: number }) {
       />
 
       <div className="relative grid overflow-hidden rounded-[inherit] border border-line bg-surface bg-clip-padding shadow-[0_1px_2px_rgb(0_0_0/0.4)] transition-shadow duration-200 ease-out group-hover:shadow-[0_22px_44px_-20px_rgb(0_0_0/0.9)] md:grid-cols-[25%_minmax(0,1fr)]">
-        <div className="flex flex-col items-start gap-0.5 bg-accent px-5 py-3 text-accent-ink md:items-center md:justify-center md:gap-0 md:px-4 md:py-5 md:text-center">
+        {/* Spotlight: a soft lime light on the card's surface, under the content, following the pointer */}
+        <span
+          ref={spotRef}
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
+          style={{
+            background:
+              "radial-gradient(420px circle at var(--x, 50%) var(--y, 50%), rgb(193 255 114 / 0.07), transparent 65%)",
+          }}
+        />
+        <div className="relative flex flex-col items-start gap-0.5 bg-accent px-5 py-3 text-accent-ink md:items-center md:justify-center md:gap-0 md:px-4 md:py-5 md:text-center">
           {card.when && <When range={card.when} />}
           <p className="order-first text-[1.0625rem] leading-snug font-bold md:order-none">{card.label}</p>
         </div>
 
-        <div className="p-5 sm:p-7">
+        <div className="relative p-5 sm:p-7">
           {card.title && <h3 className="text-[1.0625rem] leading-snug font-bold">{card.title}</h3>}
           {card.meta?.map((line, i) => (
             <p key={i} className="mt-2 leading-relaxed text-muted">
@@ -104,8 +116,32 @@ function Card({ card, index }: { card: TimelineCard; index: number }) {
               ))}
             </ul>
           )}
+          {card.code && <CodePeek code={card.code} />}
         </div>
       </div>
     </motion.article>
+  );
+}
+
+const codeTone = { keyword: "text-accent", string: "text-ink/85", plain: "text-muted", muted: "text-faint" } as const;
+
+/** One line of code under a project. Slides open on hover where hover exists; always shown on touch. */
+function CodePeek({ code }: { code: NonNullable<TimelineCard["code"]> }) {
+  return (
+    <div
+      aria-hidden
+      className="grid transition-[grid-template-rows,opacity] duration-300 ease-out [@media(hover:hover)]:grid-rows-[0fr] [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:grid-rows-[1fr] [@media(hover:hover)]:group-hover:opacity-100"
+    >
+      <div className="min-h-0 overflow-hidden">
+        <p className="mt-4 truncate rounded-md bg-canvas/70 px-3 py-2 font-mono text-[0.78rem] ring-1 ring-line">
+          <span className="text-faint">› </span>
+          {code.map(([text, tone], i) => (
+            <span key={i} className={codeTone[tone]}>
+              {text}
+            </span>
+          ))}
+        </p>
+      </div>
+    </div>
   );
 }

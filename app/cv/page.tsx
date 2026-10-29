@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { CvNav } from "@/components/cv-nav";
+import { CvProgress } from "@/components/cv-progress";
 import { PdfLink } from "@/components/pdf-link";
 import { PrintButton } from "@/components/print-button";
 import { InlineLink, RichText } from "@/components/rich";
@@ -177,10 +177,11 @@ export default function CvPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(profile)} />
       <header className="cv-actions sticky top-0 z-10 border-b border-line bg-canvas/85 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-[52rem] items-center justify-between gap-4 px-4 sm:px-6">
-          <Link href="/" className="link-sweep shrink-0 pb-0.5 text-sm font-medium whitespace-nowrap text-muted hover:text-accent">
+          {/* A full page load (not client-side), so the browser runs the name transition */}
+          <a href={asset("/")} className="link-sweep shrink-0 pb-0.5 text-sm font-medium whitespace-nowrap text-muted hover:text-accent">
             ← <span className="sm:hidden">Home</span>
             <span className="max-sm:hidden">Back to Home</span>
-          </Link>
+          </a>
           <div className="flex shrink-0 items-center gap-2">
             {personal.resume && (
               <PdfLink
@@ -201,11 +202,13 @@ export default function CvPage() {
         <nav aria-label="CV sections" className="mx-auto max-w-[52rem] border-t border-line px-2 sm:px-4">
           <CvNav sections={sections} />
         </nav>
+        <CvProgress />
       </header>
 
       <main id="main" className="mx-auto max-w-[52rem] px-4 pt-12 pb-20 sm:px-6 sm:pt-16">
         <header className="pb-8">
-          <h1 className="text-[clamp(2.25rem,7vw,3.5rem)] leading-[1.05] font-bold tracking-[-0.03em]">
+          {/* Shares its view-transition name with the homepage hero, so the name glides between pages */}
+          <h1 className="[view-transition-name:site-name] text-[clamp(2.25rem,7vw,3.5rem)] leading-[1.05] font-bold tracking-[-0.03em]">
             {personal.name}
           </h1>
           <p className="cv-title mt-3 text-lg font-medium text-accent">{personal.title}</p>

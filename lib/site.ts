@@ -13,6 +13,8 @@ export type TimelineCard = {
   meta?: Rich[];
   /** Body lines, rendered with line breaks between them. */
   body?: Rich[];
+  /** Projects: one illustrative line of code that slides in on hover, as [text, tone] pairs. */
+  code?: [string, "keyword" | "string" | "plain" | "muted"][];
 };
 
 // The full CV page, built from content/cv.json.
@@ -41,6 +43,14 @@ export const site = {
 
   about:
     "Computer Science graduate student at Purdue University Northwest (GPA 4.0) with a strong background in research-driven software development, data systems, and immersive technologies. Valedictorian graduate with hands-on experience in Java, Python, SQL, Docker, and distributed systems through funded European research projects. Published researcher in VR/HCI and electromagnetic measurement studies, with proven ability to collaborate in multidisciplinary teams and translate research into working systems.",
+
+  /** Counted up in About. Update these by hand when they change. */
+  stats: [
+    { value: 4.0, decimals: 1, label: "GPA at Purdue NW" },
+    { value: 7, label: "Publications" },
+    { value: 6, label: "Conferences" },
+    { value: 3, label: "Research projects" },
+  ],
 
   basicInfo: [
     { label: "Email:", value: "papadop@purdue.edu", href: "mailto:papadop@purdue.edu", note: "(Academic)" },
@@ -237,16 +247,51 @@ export const projects: TimelineCard[] = [
         " for more details.",
       ],
     ],
+    code: [
+      ["SELECT", "keyword"],
+      [" title, ", "plain"],
+      ["AVG", "keyword"],
+      ["(rating) ", "plain"],
+      ["FROM", "keyword"],
+      [" ratings ", "plain"],
+      ["GROUP BY", "keyword"],
+      [" title ", "plain"],
+      ["ORDER BY", "keyword"],
+      [" 2 ", "plain"],
+      ["DESC", "keyword"],
+      [";", "muted"],
+    ],
   },
   {
     label: "Data Analytics",
     title: "Trending Videos Analysis using MongoDB",
     body: [["Large-scale aggregation pipeline analysis on YouTube trending data with result visualization via Metabase."]],
+    code: [
+      ["db.videos.", "plain"],
+      ["aggregate", "keyword"],
+      ["([{ ", "muted"],
+      ["$group", "keyword"],
+      [": { _id: ", "muted"],
+      ['"$channel"', "string"],
+      [", views: { ", "muted"],
+      ["$sum", "keyword"],
+      [": ", "muted"],
+      ['"$views"', "string"],
+      [" } } }])", "muted"],
+    ],
   },
   {
     label: "Data Mining",
     title: "Frequent Collaboration Patterns Mining",
     body: [["Analyzed academic publications to extract collaboration patterns using WEKA and Python."]],
+    code: [
+      ["rules", "plain"],
+      [" = ", "muted"],
+      ["apriori", "keyword"],
+      ["(coauthors, min_support=", "plain"],
+      ["0.05", "string"],
+      [")", "muted"],
+    ],
   },
 ];
 

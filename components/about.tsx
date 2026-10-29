@@ -9,6 +9,7 @@ import { easeOut, inView, Reveal } from "./reveal";
 import { Section } from "./section";
 import { SocialLinks } from "./social-links";
 import { SweepLink } from "./rich";
+import { StatCounter } from "./stat-counter";
 
 export function About() {
   return (
@@ -17,6 +18,17 @@ export function About() {
         {/* Justified as on the original, with hyphenation so word gaps stay as even as possible */}
         <p className="text-justify text-lg leading-[1.75] text-muted hyphens-auto">{site.about}</p>
       </Reveal>
+
+      <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-7 border-y border-line py-7 sm:grid-cols-4">
+        {site.stats.map((stat, i) => (
+          <Reveal key={stat.label} index={i} className="flex flex-col-reverse gap-1">
+            <dt className="text-sm leading-snug text-muted">{stat.label}</dt>
+            <dd className="text-[clamp(2rem,4vw,2.75rem)] leading-none font-bold tracking-[-0.02em] text-accent">
+              <StatCounter value={stat.value} decimals={"decimals" in stat ? stat.decimals : 0} />
+            </dd>
+          </Reveal>
+        ))}
+      </dl>
 
       <Reveal className="mt-12">
         <h3 className="text-[clamp(2rem,3.6vw,3rem)] leading-[1.1] font-bold tracking-[-0.02em]">

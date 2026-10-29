@@ -9,9 +9,7 @@ import { Marquee } from "@/components/marquee";
 import { ScrollTop } from "@/components/scroll-top";
 import { MoreAtCv, Section } from "@/components/section";
 import { CardList } from "@/components/timeline-card";
-import { cv } from "@/lib/cv";
 import { education, experience, projects, publications, skills } from "@/lib/site";
-import { terminalScript } from "@/lib/terminal";
 
 // Resolved at build time: without the hero layers the hero shows the name alone.
 const portraitAvailable = existsSync(join(process.cwd(), "public", "hero", "subject.webp"));
@@ -23,8 +21,7 @@ export default function Page() {
       <Header />
       <main id="main">
         <Hero portraitAvailable={portraitAvailable} />
-        {/* Built here, on the server, so only the finished lines reach the browser */}
-        <About terminal={terminalScript(cv)} />
+        <About />
 
         <Section id="education" index="02" badge="Education" title="Education" band>
           <CardList cards={education} />

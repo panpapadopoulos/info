@@ -6,22 +6,16 @@ import { asset } from "@/lib/asset";
 import { site } from "@/lib/site";
 import { ArrowUpRight, FileIcon } from "./icons";
 import { easeOut, inView, Reveal } from "./reveal";
-import type { TerminalLine } from "@/lib/terminal";
 import { Section } from "./section";
 import { SocialLinks } from "./social-links";
 import { SweepLink } from "./rich";
-import { Terminal } from "./terminal";
 
-export function About({ terminal }: { terminal: TerminalLine[] }) {
+export function About() {
   return (
     <Section id="about" index="01" badge="About me" title="About me" decoration={<LeafOutline />}>
       <Reveal>
         {/* Justified as on the original, with hyphenation so word gaps stay as even as possible */}
         <p className="text-justify text-lg leading-[1.75] text-muted hyphens-auto">{site.about}</p>
-      </Reveal>
-
-      <Reveal className="mt-10">
-        <Terminal lines={terminal} />
       </Reveal>
 
       <Reveal className="mt-12">

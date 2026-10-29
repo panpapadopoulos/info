@@ -1,11 +1,12 @@
 import { site } from "@/lib/site";
+import { NetworkGraph } from "./network-graph";
 import { Reveal } from "./reveal";
 import { SweepLink } from "./rich";
 import { Section } from "./section";
 
 export function Contact() {
   return (
-    <Section id="contact" index="07" badge="Contact" title="Get in touch">
+    <Section id="contact" index="07" badge="Contact" title="Get in touch" decoration={<NetworkGraph />}>
       <dl className="space-y-5">
         {site.contact.map((item, i) => (
           <Reveal key={`${item.label}-${item.value}`} index={i}>

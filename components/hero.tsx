@@ -15,6 +15,7 @@ import { site } from "@/lib/site";
 import { useMediaQuery } from "@/lib/use-media-query";
 import { ArrowUpRight, LeafIcon } from "./icons";
 import { easeOut, settle } from "./reveal";
+import { ScrambleText } from "./scramble-text";
 
 // The original's order on load: the subtitle, then the name, then the CV button.
 const stagger: Variants = {
@@ -138,10 +139,11 @@ export function Hero({ portraitAvailable }: { portraitAvailable: boolean }) {
               id="hero-title"
               className="text-[clamp(2.75rem,12vw,8.5rem)] leading-[0.98] font-semibold tracking-[-0.035em] lg:text-[clamp(4rem,9vw,8.5rem)]"
             >
-              {site.nameLines.map((line) => (
+              {site.nameLines.map((line, i) => (
                 <span key={line} className="block overflow-hidden pb-[0.08em]">
                   <motion.span variants={reveal} className="block">
-                    {line}
+                    {/* Decodes from code characters while it slides up */}
+                    <ScrambleText text={line} delay={300 + i * 140} />
                   </motion.span>
                 </span>
               ))}

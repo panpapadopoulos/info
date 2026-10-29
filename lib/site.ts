@@ -89,6 +89,13 @@ export const site = {
     },
     { name: "HCI-VR Lab", href: "https://hci-vr.dit.uop.gr/", logo: "/images/partners-2.svg", size: [1167, 468] },
     { name: "Purdue University Northwest", href: "https://www.pnw.edu/", logo: "/images/partners-3.svg", size: [1217, 527] },
+    { name: "Munster High School", href: "https://mhs.munsterschools.gov/", logo: "/images/partners-4.png", size: [518, 512] },
+    {
+      name: "Saint George Greek School, Schererville",
+      href: "https://greekschool.stgeorgenwi.org/",
+      logo: "/images/partners-5.png",
+      size: [521, 512],
+    },
   ],
 
   footer: {

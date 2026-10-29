@@ -220,6 +220,7 @@
   }
 
   .cv-page .cv-section > h2 {
+    position: static;
     break-after: avoid;
   }
 

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CvNav } from "@/components/cv-nav";
 import { PdfLink } from "@/components/pdf-link";
 import { PrintButton } from "@/components/print-button";
 import { InlineLink, RichText } from "@/components/rich";
@@ -16,11 +17,40 @@ export const metadata: Metadata = {
 
 const stripProtocol = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
 
-/** A section of the CV: label column on the left, entries on the right. */
+/** "Academic Service" -> "academic-service": each section's anchor for the top-bar menu. */
+const sectionId = (title: string) => title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
+/** The sections in page order; ones with no entries are left out of the menu, as they are of the page. */
+const sections = (
+  [
+    ["Education", true],
+    ["Experience", true],
+    ["Certificates", cv.certificates?.length],
+    ["Publications", true],
+    ["Conferences", cv.conferences?.length],
+    ["Seminars", cv.seminars?.length],
+    ["Volunteering", cv.volunteering?.length],
+    ["Academic Service", cv.outreach?.length],
+    ["Languages", cv.languages?.length],
+    ["Projects", true],
+    ["Skills", true],
+    ["Leadership", cv.leadership?.length],
+  ] as const
+)
+  .filter(([, present]) => present)
+  .map(([label]) => ({ id: sectionId(label), label }));
+
+/** A section of the CV: label column on the left, entries on the right.
+    From md up, the label stays pinned below the top bar while its section scrolls past. */
 function CvSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="cv-section grid gap-4 border-t border-line py-8 md:grid-cols-[11rem_1fr] md:gap-8">
-      <h2 className="cv-label text-xs font-semibold tracking-[0.14em] text-accent uppercase">{title}</h2>
+    <section
+      id={sectionId(title)}
+      className="cv-section grid scroll-mt-[7.5rem] gap-4 border-t border-line py-8 md:grid-cols-[11rem_1fr] md:gap-8"
+    >
+      <h2 className="cv-label text-xs font-semibold tracking-[0.14em] text-accent uppercase md:sticky md:top-[8.75rem] md:self-start">
+        {title}
+      </h2>
       <div className="grid gap-7">{children}</div>
     </section>
   );
@@ -115,17 +145,17 @@ export default function CvPage() {
 
   return (
     <div className="cv-page min-h-svh bg-canvas">
-      <nav
-        aria-label="CV actions"
-        className="cv-actions sticky top-0 z-10 border-b border-line bg-canvas/85 backdrop-blur-md"
-      >
+      <header className="cv-actions sticky top-0 z-10 border-b border-line bg-canvas/85 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-[52rem] items-center justify-between gap-4 px-4 sm:px-6">
           <Link href="/" className="link-sweep pb-0.5 text-sm font-medium text-muted hover:text-accent">
             ← Back to Home
           </Link>
           <PrintButton />
         </div>
-      </nav>
+        <nav aria-label="CV sections" className="mx-auto max-w-[52rem] border-t border-line px-2 sm:px-4">
+          <CvNav sections={sections} />
+        </nav>
+      </header>
 
       <main id="main" className="mx-auto max-w-[52rem] px-4 pt-12 pb-20 sm:px-6 sm:pt-16">
         <header className="pb-8">

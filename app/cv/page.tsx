@@ -102,14 +102,19 @@ function Bullets({ items }: { items?: string[] }) {
   if (!items?.length) return null;
   return (
     <ul className="cv-bullets mt-3 grid gap-1.5 text-[0.9375rem] leading-relaxed text-ink/85">
-      {items.map((b, i) => (
-        <li
-          key={i}
-          className="relative pl-4 before:absolute before:top-[0.7em] before:left-0 before:size-1.5 before:rounded-full before:bg-accent/70"
-        >
-          <RichText line={parseLinks(b)} />
-        </li>
-      ))}
+      {items.map((b, i) => {
+        const line = parseLinks(b);
+        // A line holding a link (often long and unbreakable) would open wide gaps if justified.
+        const hasLink = line.some((part) => typeof part !== "string");
+        return (
+          <li
+            key={i}
+            className={`relative pl-4 before:absolute before:top-[0.7em] before:left-0 before:size-1.5 before:rounded-full before:bg-accent/70 ${hasLink ? "" : justified}`}
+          >
+            <RichText line={line} />
+          </li>
+        );
+      })}
     </ul>
   );
 }
@@ -140,6 +145,9 @@ function Documents({ items, context }: { items?: CvDocument[]; context: string }
 }
 
 const join = (...parts: (string | undefined)[]) => parts.filter(Boolean).join(" · ");
+
+/** Running text: full-width lines, hyphenated so word gaps stay even. */
+const justified = "text-justify hyphens-auto";
 
 /** A section made of the shared entry shape (certificates, conferences, volunteering, …). */
 function EntrySection({ title, entries }: { title: string; entries?: CvEntry[] }) {
@@ -220,14 +228,14 @@ export default function CvPage() {
               </li>
             ))}
           </ul>
-          <p className="mt-7 max-w-[65ch] text-[0.9375rem] leading-relaxed text-ink/85">{personal.summary}</p>
+          <p className={`mt-7 max-w-[65ch] text-[0.9375rem] leading-relaxed text-ink/85 ${justified}`}>{personal.summary}</p>
         </header>
 
         <CvSection title="Education">
           {cv.education.map((e) => (
             <article key={e.degree + e.institution} className="cv-entry">
               <EntryHead title={e.degree} when={e.year} sub={join(e.institution, e.location)} />
-              <ul className="mt-2 grid gap-1 text-[0.9375rem] leading-relaxed text-ink/85">
+              <ul className={`mt-2 grid gap-1 text-[0.9375rem] leading-relaxed text-ink/85 ${justified}`}>
                 {e.grade && <li>Grade: {e.grade}</li>}
                 {e.honors && <li>{e.honors}</li>}
                 {e.thesis && <li>Thesis: “{e.thesis}”</li>}
@@ -261,7 +269,7 @@ export default function CvPage() {
                   sub={p.venue}
                 />
                 {p.doi && <p className="cv-muted mt-1 text-sm text-faint">DOI: {p.doi}</p>}
-                {p.summary && <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink/85">{p.summary}</p>}
+                {p.summary && <p className={`mt-2 text-[0.9375rem] leading-relaxed text-ink/85 ${justified}`}>{p.summary}</p>}
                 <Documents items={p.documents} context={p.title} />
               </article>
             );
@@ -288,7 +296,7 @@ export default function CvPage() {
 
         <CvSection title="Projects">
           {cv.projectsIntro && (
-            <p className="cv-muted max-w-[65ch] text-[0.9375rem] leading-relaxed text-muted">{cv.projectsIntro}</p>
+            <p className={`cv-muted max-w-[65ch] text-[0.9375rem] leading-relaxed text-muted ${justified}`}>{cv.projectsIntro}</p>
           )}
           {cv.projects.map((p) => {
             const links = [
@@ -298,7 +306,7 @@ export default function CvPage() {
             return (
               <article key={p.title} className="cv-entry">
                 <EntryHead title={p.title} when={p.year} sub={p.tagline} />
-                {p.description && <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink/85">{p.description}</p>}
+                {p.description && <p className={`mt-2 text-[0.9375rem] leading-relaxed text-ink/85 ${justified}`}>{p.description}</p>}
                 {(p.stack?.length || links.length > 0) && (
                   <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
                     {p.stack?.map((s) => (

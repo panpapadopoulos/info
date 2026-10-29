@@ -3,16 +3,32 @@
 import data from "@/content/cv.json";
 import type { Rich } from "@/lib/site";
 
+/** A PDF in public/uploads, attached to an entry. */
+export type CvDocument = { label: string; file: string };
+
+/** Certificates, conferences, seminars, volunteering, outreach and leadership share one shape. */
+export type CvEntry = {
+  title: string;
+  organization?: string;
+  location?: string;
+  period?: string;
+  bulletPoints?: string[];
+  documents?: CvDocument[];
+};
+
 export type CV = {
   personal: {
     name: string;
     title: string;
     email: string;
+    academicEmail?: string;
+    phone?: string;
     location: string;
     website?: string;
     linkedin?: string;
     github?: string;
     scholar?: string;
+    orcid?: string;
     summary: string;
   };
   education: {
@@ -23,6 +39,7 @@ export type CV = {
     grade?: string;
     honors?: string;
     thesis?: string;
+    documents?: CvDocument[];
   }[];
   experience: {
     role: string;
@@ -30,7 +47,9 @@ export type CV = {
     location?: string;
     period: string;
     bulletPoints?: string[];
+    documents?: CvDocument[];
   }[];
+  certificates?: CvEntry[];
   publications: {
     title: string;
     venue: string;
@@ -38,7 +57,14 @@ export type CV = {
     doi?: string;
     url?: string;
     summary?: string;
+    documents?: CvDocument[];
   }[];
+  conferences?: CvEntry[];
+  seminars?: CvEntry[];
+  volunteering?: CvEntry[];
+  outreach?: CvEntry[];
+  languages?: { language: string; proficiency: string }[];
+  projectsIntro?: string;
   projects: {
     title: string;
     year?: string;
@@ -49,7 +75,7 @@ export type CV = {
     description?: string;
   }[];
   skills: { category: string; items: string[] }[];
-  languages?: { language: string; proficiency: string }[];
+  leadership?: CvEntry[];
 };
 
 export const cv: CV = data;

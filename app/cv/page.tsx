@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PrintButton } from "@/components/print-button";
 import { InlineLink, RichText } from "@/components/rich";
-import { cv, parseLinks } from "@/lib/cv";
+import { asset } from "@/lib/asset";
+import { cv, parseLinks, type CvDocument, type CvEntry } from "@/lib/cv";
 
 const { personal } = cv;
 
@@ -37,15 +38,79 @@ function EntryHead({ title, when, sub }: { title: React.ReactNode; when?: string
   );
 }
 
+function Bullets({ items }: { items?: string[] }) {
+  if (!items?.length) return null;
+  return (
+    <ul className="cv-bullets mt-3 grid gap-1.5 text-[0.9375rem] leading-relaxed text-ink/85">
+      {items.map((b, i) => (
+        <li
+          key={i}
+          className="relative pl-4 before:absolute before:top-[0.7em] before:left-0 before:size-1.5 before:rounded-full before:bg-accent/70"
+        >
+          <RichText line={parseLinks(b)} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/** Attached PDFs, as small links. Left off the printed résumé. */
+function Documents({ items }: { items?: CvDocument[] }) {
+  if (!items?.length) return null;
+  return (
+    <ul className="cv-docs mt-3 flex flex-wrap gap-2">
+      {items.map((d) => (
+        <li key={d.file}>
+          <a
+            href={asset(d.file)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-line-strong px-3 py-1 text-sm text-muted transition-[color,border-color] duration-150 hover:border-accent hover:text-accent active:opacity-70"
+          >
+            <svg aria-hidden viewBox="0 0 24 24" className="size-3.5" fill="none" stroke="currentColor" strokeWidth={2}>
+              <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+              <path d="M14 3v5h5" />
+            </svg>
+            {d.label}
+            <span className="sr-only"> (PDF, opens in a new tab)</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 const join = (...parts: (string | undefined)[]) => parts.filter(Boolean).join(" · ");
+
+/** A section made of the shared entry shape (certificates, conferences, volunteering, …). */
+function EntrySection({ title, entries }: { title: string; entries?: CvEntry[] }) {
+  if (!entries?.length) return null;
+  return (
+    <CvSection title={title}>
+      {entries.map((e) => (
+        <article key={e.title + e.organization + e.period} className="cv-entry">
+          <EntryHead title={e.title} when={e.period} sub={join(e.organization, e.location)} />
+          <Bullets items={e.bulletPoints} />
+          <Documents items={e.documents} />
+        </article>
+      ))}
+    </CvSection>
+  );
+}
 
 export default function CvPage() {
   const contacts = [
     { label: personal.email, href: `mailto:${personal.email}` },
+    personal.academicEmail && {
+      label: `${personal.academicEmail} (academic)`,
+      href: `mailto:${personal.academicEmail}`,
+    },
+    personal.phone && { label: personal.phone, href: `tel:${personal.phone.replace(/[^\d+]/g, "")}` },
     personal.website && { label: stripProtocol(personal.website), href: personal.website },
     personal.linkedin && { label: "LinkedIn", href: personal.linkedin },
     personal.github && { label: "GitHub", href: personal.github },
     personal.scholar && { label: "Google Scholar", href: personal.scholar },
+    personal.orcid && { label: "ORCID", href: personal.orcid },
   ].filter((c): c is { label: string; href: string } => Boolean(c));
 
   return (
@@ -55,10 +120,7 @@ export default function CvPage() {
         className="cv-actions sticky top-0 z-10 border-b border-line bg-canvas/85 backdrop-blur-md"
       >
         <div className="mx-auto flex h-16 max-w-[52rem] items-center justify-between gap-4 px-4 sm:px-6">
-          <Link
-            href="/"
-            className="link-sweep pb-0.5 text-sm font-medium text-muted hover:text-accent"
-          >
+          <Link href="/" className="link-sweep pb-0.5 text-sm font-medium text-muted hover:text-accent">
             ← Back to Home
           </Link>
           <PrintButton />
@@ -91,6 +153,7 @@ export default function CvPage() {
                 {e.honors && <li>{e.honors}</li>}
                 {e.thesis && <li>Thesis: “{e.thesis}”</li>}
               </ul>
+              <Documents items={e.documents} />
             </article>
           ))}
         </CvSection>
@@ -99,33 +162,54 @@ export default function CvPage() {
           {cv.experience.map((x) => (
             <article key={x.role + x.organization + x.period} className="cv-entry">
               <EntryHead title={x.role} when={x.period} sub={join(x.organization, x.location)} />
-              {x.bulletPoints && x.bulletPoints.length > 0 && (
-                <ul className="cv-bullets mt-3 grid gap-1.5 text-[0.9375rem] leading-relaxed text-ink/85">
-                  {x.bulletPoints.map((b, i) => (
-                    <li key={i} className="relative pl-4 before:absolute before:top-[0.7em] before:left-0 before:size-1.5 before:rounded-full before:bg-accent/70">
-                      <RichText line={parseLinks(b)} />
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <Bullets items={x.bulletPoints} />
+              <Documents items={x.documents} />
             </article>
           ))}
         </CvSection>
+
+        <EntrySection title="Certificates" entries={cv.certificates} />
 
         <CvSection title="Publications">
           {cv.publications.map((p) => {
             const href = p.url || (p.doi ? `https://doi.org/${p.doi}` : undefined);
             return (
               <article key={p.title} className="cv-entry">
-                <EntryHead title={href ? <InlineLink href={href}>{p.title}</InlineLink> : p.title} when={p.year} sub={p.venue} />
+                <EntryHead
+                  title={href ? <InlineLink href={href}>{p.title}</InlineLink> : p.title}
+                  when={p.year}
+                  sub={p.venue}
+                />
                 {p.doi && <p className="cv-muted mt-1 text-sm text-faint">DOI: {p.doi}</p>}
                 {p.summary && <p className="mt-2 text-[0.9375rem] leading-relaxed text-ink/85">{p.summary}</p>}
+                <Documents items={p.documents} />
               </article>
             );
           })}
         </CvSection>
 
+        <EntrySection title="Conferences" entries={cv.conferences} />
+        <EntrySection title="Seminars" entries={cv.seminars} />
+        <EntrySection title="Volunteering" entries={cv.volunteering} />
+        <EntrySection title="Academic Service" entries={cv.outreach} />
+
+        {cv.languages && cv.languages.length > 0 && (
+          <CvSection title="Languages">
+            <ul className="grid gap-2 text-[0.9375rem]">
+              {cv.languages.map((l) => (
+                <li key={l.language}>
+                  <span className="font-semibold">{l.language}</span>{" "}
+                  <span className="cv-muted text-muted">— {l.proficiency}</span>
+                </li>
+              ))}
+            </ul>
+          </CvSection>
+        )}
+
         <CvSection title="Projects">
+          {cv.projectsIntro && (
+            <p className="cv-muted max-w-[65ch] text-[0.9375rem] leading-relaxed text-muted">{cv.projectsIntro}</p>
+          )}
           {cv.projects.map((p) => {
             const links = [
               p.url && { label: "Live", href: p.url },
@@ -165,18 +249,7 @@ export default function CvPage() {
           </dl>
         </CvSection>
 
-        {cv.languages && cv.languages.length > 0 && (
-          <CvSection title="Languages">
-            <ul className="flex flex-wrap gap-x-8 gap-y-2 text-[0.9375rem]">
-              {cv.languages.map((l) => (
-                <li key={l.language}>
-                  <span className="font-semibold">{l.language}</span>{" "}
-                  <span className="cv-muted text-muted">— {l.proficiency}</span>
-                </li>
-              ))}
-            </ul>
-          </CvSection>
-        )}
+        <EntrySection title="Leadership" entries={cv.leadership} />
       </main>
     </div>
   );

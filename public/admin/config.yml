@@ -13,8 +13,36 @@ backend:
 site_url: https://panagiotispapadopoulos.com
 display_url: https://panagiotispapadopoulos.com
 
+# PDFs and images uploaded in the CMS land here and are served at /uploads/…
 media_folder: "public/uploads"
 public_folder: "/uploads"
+
+# Reused below with YAML aliases (*documents, *entry_fields).
+x-documents: &documents
+  label: "Documents (PDF)"
+  name: "documents"
+  widget: "list"
+  required: false
+  summary: "{{fields.label}}"
+  fields:
+    - { label: "Label", name: "label", widget: "string", hint: "e.g. Certificate, Diploma" }
+    - { label: "File", name: "file", widget: "file" }
+
+x-bullets: &bullets
+  label: "Bullets"
+  name: "bulletPoints"
+  widget: "list"
+  required: false
+  hint: "Links: [label](https://example.com)"
+  field: { label: "Bullet", name: "bullet", widget: "text" }
+
+x-entry-fields: &entry_fields
+  - { label: "Title", name: "title", widget: "string" }
+  - { label: "Organization", name: "organization", widget: "string", required: false }
+  - { label: "Location", name: "location", widget: "string", required: false }
+  - { label: "Period", name: "period", widget: "string", required: false }
+  - *bullets
+  - *documents
 
 collections:
   - name: "cv"
@@ -33,11 +61,14 @@ collections:
               - { label: "Name", name: "name", widget: "string" }
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Email", name: "email", widget: "string" }
+              - { label: "Academic email", name: "academicEmail", widget: "string", required: false }
+              - { label: "Phone", name: "phone", widget: "string", required: false }
               - { label: "Location", name: "location", widget: "string" }
               - { label: "Website", name: "website", widget: "string", required: false }
               - { label: "LinkedIn", name: "linkedin", widget: "string", required: false }
               - { label: "GitHub", name: "github", widget: "string", required: false }
               - { label: "Google Scholar", name: "scholar", widget: "string", required: false }
+              - { label: "ORCID", name: "orcid", widget: "string", required: false }
               - { label: "Summary", name: "summary", widget: "text" }
 
           - label: "Education"
@@ -52,6 +83,7 @@ collections:
               - { label: "Grade", name: "grade", widget: "string", required: false }
               - { label: "Honors", name: "honors", widget: "text", required: false }
               - { label: "Thesis", name: "thesis", widget: "string", required: false }
+              - *documents
 
           - label: "Experience"
             name: "experience"
@@ -62,12 +94,15 @@ collections:
               - { label: "Organization", name: "organization", widget: "string" }
               - { label: "Location", name: "location", widget: "string", required: false }
               - { label: "Period", name: "period", widget: "string" }
-              - label: "Bullets"
-                name: "bulletPoints"
-                widget: "list"
-                required: false
-                hint: "Links: [label](https://example.com)"
-                field: { label: "Bullet", name: "bullet", widget: "text" }
+              - *bullets
+              - *documents
+
+          - label: "Certificates"
+            name: "certificates"
+            widget: "list"
+            required: false
+            summary: "{{fields.title}}"
+            fields: *entry_fields
 
           - label: "Publications"
             name: "publications"
@@ -80,6 +115,46 @@ collections:
               - { label: "DOI", name: "doi", widget: "string", required: false, hint: "Without https://doi.org/" }
               - { label: "URL", name: "url", widget: "string", required: false }
               - { label: "Summary", name: "summary", widget: "text", required: false }
+              - *documents
+
+          - label: "Conferences"
+            name: "conferences"
+            widget: "list"
+            required: false
+            summary: "{{fields.period}} — {{fields.title}}"
+            fields: *entry_fields
+
+          - label: "Seminars"
+            name: "seminars"
+            widget: "list"
+            required: false
+            summary: "{{fields.period}} — {{fields.title}}"
+            fields: *entry_fields
+
+          - label: "Volunteering"
+            name: "volunteering"
+            widget: "list"
+            required: false
+            summary: "{{fields.title}} — {{fields.organization}}"
+            fields: *entry_fields
+
+          - label: "Academic Service"
+            name: "outreach"
+            widget: "list"
+            required: false
+            summary: "{{fields.title}} — {{fields.organization}}"
+            fields: *entry_fields
+
+          - label: "Languages"
+            name: "languages"
+            widget: "list"
+            required: false
+            summary: "{{fields.language}} — {{fields.proficiency}}"
+            fields:
+              - { label: "Language", name: "language", widget: "string" }
+              - { label: "Proficiency", name: "proficiency", widget: "string" }
+
+          - { label: "Projects intro", name: "projectsIntro", widget: "text", required: false }
 
           - label: "Projects"
             name: "projects"
@@ -109,11 +184,9 @@ collections:
                 widget: "list"
                 field: { label: "Skill", name: "skill", widget: "string" }
 
-          - label: "Languages"
-            name: "languages"
+          - label: "Leadership"
+            name: "leadership"
             widget: "list"
             required: false
-            summary: "{{fields.language}} — {{fields.proficiency}}"
-            fields:
-              - { label: "Language", name: "language", widget: "string" }
-              - { label: "Proficiency", name: "proficiency", widget: "string" }
+            summary: "{{fields.title}} — {{fields.organization}}"
+            fields: *entry_fields

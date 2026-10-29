@@ -31,7 +31,7 @@ Edit it visually at `/admin` ([Decap CMS](https://decapcms.org), configured in [
 2. Open `/admin`, paste the token and sign in. It is stored in that browser only; **Log out** in the CMS removes it.
 3. Each save commits `content/cv.json` to `main`, and the site redeploys in a minute or two.
 
-Links inside experience bullets use `[label](https://…)`.
+Links inside bullets use `[label](https://…)`. PDFs attached to entries (diplomas, certificates, letters) live in [`public/uploads/`](public/uploads/); upload new ones from any entry's **Documents** field. They show as links on the page and are left off the printed résumé.
 
 Pushing to `main` builds and deploys the site to GitHub Pages ([`.github/workflows/static.yml`](.github/workflows/static.yml)). In the repository settings, **Pages → Source** must be set to **GitHub Actions**.
 

@@ -1,5 +1,6 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+# Builds the Next.js site at the repo root and deploys it to GitHub Pages,
+# with the previous site kept under /legacy/.
+name: Deploy site to Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -22,22 +23,53 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static site
+        run: npm run build
+        env:
+          # "" on a custom domain, "/<repo>" on <user>.github.io/<repo>/
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+
+      # The previous site, served as-is under /legacy/ (the downloaded .zip archives stay
+      # in the repo but aren't published). Old résumé links keep working at /assets/.
+      - name: Add the legacy site
+        run: |
+          mkdir -p out/legacy
+          cp -r legacy/assets legacy/html legacy/lcars legacy/index.html legacy/404.html out/legacy/
+          cp out/favicon.ico out/legacy/assets/images/logos/favicon.ico
+          mkdir -p out/assets
+          cp legacy/assets/resume.pdf out/assets/resume.pdf
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
   deploy:
+    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload entire repository
-          path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

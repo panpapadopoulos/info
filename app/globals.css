@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+/* The old Bootstrap site lives in legacy/; don't generate utilities from its class names. */
+@source not "../legacy";
+
+/* ---------- Tokens ---------- */
+@theme {
+  /* Surfaces. `band` stands in for the original's alternating light-gray sections. */
+  --color-canvas: #0a0b0c;
+  --color-band: #111315;
+  --color-surface: #171a1c;
+  --color-raised: #1f2325;
+  /* The original brand dark, used for badges, tooltips and the footer */
+  --color-charcoal: #1f2a2e;
+
+  /* Ink */
+  --color-ink: #f5f7f4;
+  --color-muted: #b7bcb9;
+  --color-faint: #8f9592;
+
+  /* Lines */
+  --color-line: rgb(255 255 255 / 0.08);
+  --color-line-strong: rgb(255 255 255 / 0.14);
+
+  /* The original brand lime */
+  --color-accent: #c1ff72;
+  --color-accent-ink: #1f2a2e;
+
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+
+  /* Motion */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+
+  --animate-spin-slow: spin-slow 9s linear infinite;
+  --animate-marquee: marquee 40s linear infinite;
+
+  @keyframes spin-slow {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* Bootstrap's xxl container width, as on the original site */
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 82.5rem;
+  padding-inline: 1rem;
+  @media (width >= 40rem) {
+    padding-inline: 1.5rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 2rem;
+  }
+}
+
+/* Standalone link: an underline sweeps in from the left on hover and focus */
+@utility link-sweep {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  box-decoration-break: clone;
+  transition:
+    background-size 200ms var(--ease-out-strong),
+    color 150ms ease,
+    opacity 150ms ease;
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px;
+  }
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+    /* Hidden tooltips near the edge must never widen the page */
+    overflow-x: clip;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    overflow-wrap: anywhere;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 0.375rem;
+  }
+}
+
+/* ---------- Hero photo ---------- */
+/* Phone: full-bleed, fading into the page under the name.
+   Desktop: the right two-thirds, fading out to the left and the bottom. */
+.hero-photo {
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, #000 55%);
+  mask-image: linear-gradient(to top, transparent 0%, #000 55%);
+}
+
+@media (width >= 64rem) {
+  .hero-photo {
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, #000 45%),
+      linear-gradient(to top, transparent 0%, #000 32%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+      linear-gradient(to right, transparent 0%, #000 45%),
+      linear-gradient(to top, transparent 0%, #000 32%);
+    mask-composite: intersect;
+  }
+}
+
+/* ---------- Atmosphere ---------- */
+/* Film grain: a static fractal-noise tile, cheap to composite */
+.atmosphere-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+}

@@ -4,6 +4,7 @@
     "scholar": "https://scholar.google.com/citations?user=QK3LqOYAAAAJ&hl=en",
     "summary": "Computer Science graduate student at Purdue University Northwest (GPA 4.0) with a strong background in research-driven software development, data systems, and immersive technologies. Valedictorian graduate with hands-on experience in Java, Python, SQL, Docker, and distributed systems through funded European research projects. Published researcher in VR/HCI and electromagnetic measurement studies, with proven ability to collaborate in multidisciplinary teams and translate research into working systems.",
     "name": "Panagiotis Papadopoulos",
+    "resume": "/Panagiotis-Papadopoulos-Resume.pdf",
     "phone": "+1 (219) 466-6720",
     "academicEmail": "papadop@purdue.edu",
     "location": "Munster, IN, USA",
@@ -11,8 +12,7 @@
     "website": "https://panagiotispapadopoulos.com",
     "orcid": "https://orcid.org/0009-0006-3062-3999",
     "email": "giotispapadopoulos@outlook.com",
-    "linkedin": "https://www.linkedin.com/in/panagiotis-papadopoulos-0b1a291ab/",
-    "resume": "/Panagiotis-Papadopoulos-Resume.pdf"
+    "linkedin": "https://www.linkedin.com/in/panagiotis-papadopoulos-0b1a291ab/"
   },
   "skills": [
     {
@@ -493,6 +493,44 @@
     }
   ],
   "projects": [
+    {
+      "title": "MCPShield",
+      "year": "2026",
+      "tagline": "AI Tool-Call Security Framework",
+      "stack": [
+        "Python",
+        "FastAPI",
+        "React",
+        "TypeScript",
+        "Docker",
+        "LLMs",
+        "MCP"
+      ],
+      "github": "https://github.com/panpapadopoulos/MCPShield",
+      "description": "A security framework for detecting and preventing unsafe AI tool calls using rule-based, LLM-based, and hybrid detection methods, with an interactive dashboard for monitoring and evaluating threats."
+    },
+    {
+      "title": "HRI Trust Experiment",
+      "year": "2026",
+      "url": "https://panpapadopoulos.github.io/hri-experiment/",
+      "github": "https://github.com/panpapadopoulos/hri-experiment",
+      "tagline": "Building, Losing, and Recovering Trust in Human–Robot Interaction",
+      "description": "Designed an interactive experiment investigating how robot errors, apologies, and corrective feedback influence human trust and decision-making, using simulated robot-assisted tasks.",
+      "stack": [
+        "Python",
+        "PsiTurk",
+        "JavaScript",
+        "HTML/CSS",
+        "Experimental Design"
+      ]
+    },
+    {
+      "title": "Adult Income Classification",
+      "tagline": "Deep Learning and AutoML Benchmarking",
+      "year": "2026",
+      "description": "Developed a deep neural network from scratch to predict income categories using census data, comparing its performance against AutoML models and deploying the selected model through an inference API.",
+      "github": "https://github.com/panpapadopoulos/AdultIncomeClassification"
+    },
     {
       "title": "Postgres & Chill",
       "year": "",

@@ -603,6 +603,20 @@
       "description": "Developed an in-memory database using a custom doubly linked list, implementing four sorting algorithms, SQL-like query parsing, recursive data export, and performance benchmarking."
     },
     {
+      "title": "DIT-UoP Official Visual Identity",
+      "tagline": "Official Department Logo & Visual Identity Design",
+      "year": "2023",
+      "stack": [
+        "Graphic Design",
+        "Visual Identity",
+        "Logo Design",
+        "Branding"
+      ],
+      "github": "https://github.com/panpapadopoulos/dit-uop-logo-proposal",
+      "description": "Co-designed the official logo of the Department of Informatics and Telecommunications at the University of the Peloponnese. Originally developed as a collaborative design proposal, the logo was formally adopted as the department's official visual identity.",
+      "url": "dit.uop.gr"
+    },
+    {
       "title": "ASTERAS",
       "year": "",
       "tagline": "Search engine for researchers based on their bibliography",

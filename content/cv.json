@@ -510,6 +510,20 @@
       "description": "A security framework for detecting and preventing unsafe AI tool calls using rule-based, LLM-based, and hybrid detection methods, with an interactive dashboard for monitoring and evaluating threats."
     },
     {
+      "title": "Career Day Interview Queue Management",
+      "year": "2023",
+      "tagline": "University Career Fair Management System",
+      "stack": [
+        "PHP",
+        "PostgreSQL",
+        "Docker",
+        "REST API",
+        "Web Development"
+      ],
+      "github": "https://github.com/lishhhhmm/uop-cdiq",
+      "description": "Co-developed a web-based interview queue management system for the University of the Peloponnese. Deployed at its inaugural Career Day event, the system remains in active use, with annual updates and new features to support students, employers, and event organizers."
+    },
+    {
       "title": "HRI Trust Experiment",
       "year": "2026",
       "url": "https://panpapadopoulos.github.io/hri-experiment/",
@@ -548,16 +562,73 @@
       "description": "A data-driven movie recommender that uses user ratings to generate personalized suggestions."
     },
     {
-      "title": "Frequent Collaboration Patterns Mining",
-      "year": "",
-      "tagline": "Data mining with WEKA",
+      "title": "MobiCave",
+      "year": "2022-24",
+      "tagline": "Interactive Virtual Reality CAVE System",
       "stack": [
-        "WEKA",
-        "Python"
+        "Virtual Reality",
+        "Motion Tracking",
+        "HCI",
+        "Experimental Evaluation"
+      ],
+      "description": "Contributed to the development of an immersive virtual reality environment supporting shared gaming experiences, motion tracking, and human–computer interaction research.",
+      "url": "https://users.uop.gr/~hci-vr/projects/riu//"
+    },
+    {
+      "title": "Brave New World – VR Theater",
+      "tagline": "Multiplayer Virtual Reality for Theatrical Performances",
+      "year": "2023-24",
+      "description": "Developed and integrated virtual reality technologies supporting an international theatrical production connecting performers across multiple countries through shared virtual environments.",
+      "stack": [
+        "VRChat",
+        "Virtual Reality",
+        "OBS Studio",
+        "Live Streaming",
+        "HCI"
+      ],
+      "url": "https://artandlife.gr/patra/events/brave_new_world_thaymastos_kainoyrgios_kosmos_sto_theatro_lithografeio"
+    },
+    {
+      "title": "Memory Database & Custom SQL Engine",
+      "tagline": "In-Memory Database and Algorithm Implementation",
+      "year": "2026",
+      "stack": [
+        "Python",
+        "Data Structures",
+        "SQL Parsing",
+        "Sorting Algorithms",
+        "Performance Analysis"
+      ],
+      "github": "https://github.com/panpapadopoulos/cs51510p1",
+      "description": "Developed an in-memory database using a custom doubly linked list, implementing four sorting algorithms, SQL-like query parsing, recursive data export, and performance benchmarking."
+    },
+    {
+      "title": "ASTERAS",
+      "year": "",
+      "tagline": "Search engine for researchers based on their bibliography",
+      "stack": [
+        "Java",
+        "Apache Lucene",
+        "JavaFX",
+        "Apache Maven"
       ],
       "url": "",
       "github": "",
-      "description": "Processed researchers’ publications to find collaboration patterns between them."
+      "description": "Indexes and searches researchers’ BibTeX files with the Apache Lucene library, with a graphical interface."
+    },
+    {
+      "title": "PANDORA",
+      "tagline": "5G Electromagnetic Field Monitoring and Analysis",
+      "year": "2022-24",
+      "stack": [
+        "RF Measurements",
+        "5G",
+        "NARDA",
+        "Data Analysis",
+        "Telecommunications"
+      ],
+      "description": "Participated in a research initiative investigating electromagnetic field exposure through measurement campaigns, data collection, and analysis of wireless communication networks.",
+      "url": "https://wmclab.uop.gr/pandora/"
     },
     {
       "title": "Trending Videos Analysis",
@@ -573,18 +644,16 @@
       "description": "Analyzed data on the latest trending YouTube videos with MongoDB aggregation pipelines, with data conversion and visualization of the results."
     },
     {
-      "title": "ASTERAS",
+      "title": "Frequent Collaboration Patterns Mining",
       "year": "",
-      "tagline": "Search engine for researchers based on their bibliography",
+      "tagline": "Data mining with WEKA",
       "stack": [
-        "Java",
-        "Apache Lucene",
-        "JavaFX",
-        "Apache Maven"
+        "WEKA",
+        "Python"
       ],
       "url": "",
       "github": "",
-      "description": "Indexes and searches researchers’ BibTeX files with the Apache Lucene library, with a graphical interface."
+      "description": "Processed researchers’ publications to find collaboration patterns between them."
     },
     {
       "title": "Transaction Analysis",
@@ -602,40 +671,6 @@
       "description": "Analyzed an e-commerce fashion company’s transactions by running MapReduce jobs, including a local HDFS setup and visualization of the results."
     },
     {
-      "title": "Rayleigh Channel Simulation",
-      "year": "",
-      "tagline": "1, 2 and 4 Rayleigh channels with a rake receiver",
-      "stack": [
-        "MATLAB"
-      ],
-      "url": "",
-      "github": "",
-      "description": "Simulated Rayleigh channel behavior with AWGN and reception through a rake receiver: BER, SER, eye diagram and constellation chart."
-    },
-    {
-      "title": "GooseGame",
-      "year": "",
-      "tagline": "Multiplayer board game",
-      "stack": [
-        "Java",
-        "NetBeans"
-      ],
-      "url": "",
-      "github": "",
-      "description": "A simulation of the board game with terminal input, simple terminal graphics and all the moves of the actual game."
-    },
-    {
-      "title": "Stray Animal Shelter App",
-      "year": "",
-      "tagline": "Mobile app GUI design",
-      "stack": [
-        "Figma"
-      ],
-      "url": "",
-      "github": "",
-      "description": "GUI design for a stray animal shelter organization’s mobile app."
-    },
-    {
       "title": "Social Network Users and Their Activity on POIs",
       "year": "",
       "tagline": "Database design and web interface",
@@ -647,6 +682,20 @@
       "url": "",
       "github": "",
       "description": "Designed the entity-relationship model, implemented it in the database, and built a simple web application to run fixed queries and add or delete data."
+    },
+    {
+      "title": "ROS 2 Robotics Communication",
+      "tagline": "Distributed Communication in Robotic Systems",
+      "year": "2026",
+      "stack": [
+        "Python",
+        "ROS 2",
+        "Linux",
+        "WSL2"
+      ],
+      "url": "",
+      "github": "https://github.com/panpapadopoulos/ROS2",
+      "description": "Implemented ROS 2 applications demonstrating publisher–subscriber communication, services, parameters, and launch configurations using Python."
     },
     {
       "title": "Boolean Search Engine for Text Documents",
@@ -661,17 +710,6 @@
       "description": "An indexer and searcher built on a dynamic hash table."
     },
     {
-      "title": "WAV & PGM File Editor",
-      "year": "",
-      "tagline": "File data manipulation",
-      "stack": [
-        "C"
-      ],
-      "url": "",
-      "github": "",
-      "description": "A simple editor for WAV audio and PGM image files."
-    },
-    {
       "title": "SIP Protocol Modeling",
       "year": "",
       "tagline": "Formal verification",
@@ -682,6 +720,51 @@
       "url": "",
       "github": "",
       "description": "Modeled the SIP protocol in Promela and verified it with iSpin."
+    },
+    {
+      "title": "Rayleigh Channel Simulation",
+      "year": "",
+      "tagline": "1, 2 and 4 Rayleigh channels with a rake receiver",
+      "stack": [
+        "MATLAB"
+      ],
+      "url": "",
+      "github": "",
+      "description": "Simulated Rayleigh channel behavior with AWGN and reception through a rake receiver: BER, SER, eye diagram and constellation chart."
+    },
+    {
+      "title": "Stray Animal Shelter App",
+      "year": "",
+      "tagline": "Mobile app GUI design",
+      "stack": [
+        "Figma"
+      ],
+      "url": "",
+      "github": "",
+      "description": "GUI design for a stray animal shelter organization’s mobile app."
+    },
+    {
+      "title": "GooseGame",
+      "year": "",
+      "tagline": "Multiplayer board game",
+      "stack": [
+        "Java",
+        "NetBeans"
+      ],
+      "url": "",
+      "github": "",
+      "description": "A simulation of the board game with terminal input, simple terminal graphics and all the moves of the actual game."
+    },
+    {
+      "title": "WAV & PGM File Editor",
+      "year": "",
+      "tagline": "File data manipulation",
+      "stack": [
+        "C"
+      ],
+      "url": "",
+      "github": "",
+      "description": "A simple editor for WAV audio and PGM image files."
     }
   ],
   "languages": [

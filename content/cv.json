@@ -589,6 +589,20 @@
       "url": "https://artandlife.gr/patra/events/brave_new_world_thaymastos_kainoyrgios_kosmos_sto_theatro_lithografeio"
     },
     {
+      "title": "U.S. Highway Graph Routing & Algorithm Analysis",
+      "year": "2026",
+      "tagline": "Graph Algorithms & Route Optimization",
+      "stack": [
+        "Python ",
+        "Graph Algorithms",
+        " NetworkX-free Implementation",
+        "GeoJSON Data Visualization",
+        "Performance Analysis"
+      ],
+      "description": "Developed a Python-based route planning system modeling cities across the Central and Eastern United States. Implemented six graph algorithms for traversal, shortest-path routing, and minimum spanning trees, incorporating geographic visualizations, travel risk estimation, fuel consumption calculations, and performance benchmarking.",
+      "github": "https://github.com/panpapadopoulos/USGraphRouting"
+    },
+    {
       "title": "Memory Database & Custom SQL Engine",
       "tagline": "In-Memory Database and Algorithm Implementation",
       "year": "2026",
@@ -614,7 +628,7 @@
       ],
       "github": "https://github.com/panpapadopoulos/dit-uop-logo-proposal",
       "description": "Co-designed the official logo of the Department of Informatics and Telecommunications at the University of the Peloponnese. Originally developed as a collaborative design proposal, the logo was formally adopted as the department's official visual identity.",
-      "url": "dit.uop.gr"
+      "url": "https://dit.uop.gr"
     },
     {
       "title": "ASTERAS",
@@ -696,6 +710,19 @@
       "url": "",
       "github": "",
       "description": "Designed the entity-relationship model, implemented it in the database, and built a simple web application to run fixed queries and add or delete data."
+    },
+    {
+      "title": "Compiler Construction – Lexical & Syntax Analysis",
+      "year": "2025",
+      "tagline": "Programming Languages & Compiler Design",
+      "stack": [
+        "Java ",
+        "ANTLR 4",
+        "Compiler Design",
+        "Lexical Analysis",
+        "Syntax Parsing"
+      ],
+      "description": "Collaboratively developed a lexical analyzer and syntax parser for a custom programming language using Java and ANTLR 4. Implemented token recognition, grammar-based parsing, syntax error detection, and parse tree generation, with automated test cases covering valid and invalid programs."
     },
     {
       "title": "ROS 2 Robotics Communication",

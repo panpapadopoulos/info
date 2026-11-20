@@ -806,6 +806,22 @@
       "url": "",
       "github": "",
       "description": "A simple editor for WAV audio and PGM image files."
+    },
+    {
+      "title": "Trackwell",
+      "year": "2026",
+      "tagline": "AI-Powered Work & Financial Management Platform",
+      "description": "A full-stack application for managing work assignments, payroll, expenses, and financial analytics. Features an AI assistant that uses persistent context and multi-step tool execution to automate scheduling, interpret natural-language requests, and generate validated assignment records.",
+      "url": "https://trackwell.panagiotispapadopoulos.com/",
+      "github": "https://github.com/panpapadopoulos/trackwell",
+      "stack": [
+        "React",
+        "TypeScript",
+        "Cloudflare Workers",
+        "Cloudflare D1",
+        "Workers AI",
+        "Tailwind CSS"
+      ]
     }
   ],
   "languages": [
